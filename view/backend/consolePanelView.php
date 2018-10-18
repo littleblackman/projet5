@@ -10,8 +10,8 @@
                     <h5 class="card-header">Gestion des Projets</h5>
                     <div class="input-group">
                         <ul>
-                            <li><a href="index.php?action=addNewProject">Ajout d'un projet</a></li>
-                            <li><a href="index.php?action=managePosts">Editer / supprimer un projet</a>
+                            <li><a href="console.php?action=addNewProject">Ajout d'un projet</a></li>
+                            <li><a href="console.php?action=manageProjects">Editer / supprimer un projet</a>
                             </li>
                         </ul>
                     </div>
@@ -25,8 +25,8 @@
                 <h5 class="card-header">Gestion des Expériences</h5>
                 <div class="input-group">
                     <ul>
-                        <li><a href="index.php?action=addNewJob">Ajout d'une expérience</a></li>
-                        <li><a href="index.php?action=manageJobs">Editer / supprimer une expérience</a>
+                        <li><a href="console.php?action=addNewJob">Ajout d'une expérience</a></li>
+                        <li><a href="console.php?action=manageJobs">Editer / supprimer une expérience</a>
                         </li>
                     </ul>
                 </div>
@@ -39,8 +39,8 @@
                 <h5 class="card-header">Gestion des Formations</h5>
                 <div class="input-group">
                     <ul>
-                        <li><a href="index.php?action=addNewFormation">Ajout d'une formation</a></li>
-                        <li><a href="index.php?action=manageFormations">Editer / supprimer une formation</a>
+                        <li><a href="console.php?action=addNewFormation">Ajout d'une formation</a></li>
+                        <li><a href="console.php?action=manageFormations">Editer / supprimer une formation</a>
                         </li>
                     </ul>
                 </div>
@@ -53,8 +53,8 @@
                 <h5 class="card-header">Gestion des Compétences</h5>
                 <div class="input-group">
                     <ul>
-                        <li><a href="index.php?action=addNewSkill">Ajout d'une compétence</a></li>
-                        <li><a href="index.php?action=manageSkills">Editer / supprimer une compétence</a>
+                        <li><a href="console.php?action=addNewSkill">Ajout d'une compétence</a></li>
+                        <li><a href="console.php?action=manageSkills">Editer / supprimer une compétence</a>
                         </li>
                     </ul>
                 </div>

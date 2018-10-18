@@ -32,15 +32,15 @@
                     <h5 class="card-header">Accès rapide</h5>
                     <div class="input-group">
                         <ul>
-                            <li><a href="index.php?action=admin">Accueil administration</a></li>
-                            <li><a href="index.php?action=addNewProject">Ajout d'un projet</a></li>
-                            <li><a href="index.php?action=managePosts">Editer / supprimer un projet</a>
-                            <li><a href="index.php?action=addNewJob">Ajout d'une expérience</a></li>
-                            <li><a href="index.php?action=manageJobs">Editer / supprimer une expérience</a></li>
-                            <li><a href="index.php?action=addNewFormation">Ajout d'une formation</a></li>
-                            <li><a href="index.php?action=manageFormations">Gestion des formations</a></li>
-                            <li><a href="index.php?action=addNewSkill">Ajout d'une compétence</a></li>
-                            <li><a href="index.php?action=manageSkills">Editer / supprimer une compétence</a>
+                            <li><a href="console.php?action=admin">Accueil administration</a></li>
+                            <li><a href="console.php?action=addNewProject">Ajout d'un projet</a></li>
+                            <li><a href="console.php?action=manageProjects">Editer / supprimer un projet</a>
+                            <li><a href="console.php?action=addNewJob">Ajout d'une expérience</a></li>
+                            <li><a href="console.php?action=manageJobs">Editer / supprimer une expérience</a></li>
+                            <li><a href="console.php?action=addNewFormation">Ajout d'une formation</a></li>
+                            <li><a href="console.php?action=manageFormations">Gestion des formations</a></li>
+                            <li><a href="console.php?action=addNewSkill">Ajout d'une compétence</a></li>
+                            <li><a href="console.php?action=manageSkills">Editer / supprimer une compétence</a>
                         </ul>
                     </div>
                 </div>
