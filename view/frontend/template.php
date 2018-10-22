@@ -18,20 +18,19 @@
     <meta name="twitter:creator" content="Caroline Moulin" />
 
     <title><?= $title ?></title>
-    <link href="../../public/css/stylish-portfolio.css" rel="stylesheet" />
+    <link href="public/css/stylish-portfolio.css" rel="stylesheet" />
 </head>
 <body>
 
 <div id="content" class="container-fluid">
     <div class="row">
         <?= $content ?>
-    <!--diaporama-->
 
-    <!--Expérience/CV-->
-    <!--Map-->
     </div>
 
 </div>
+
+<?php include("include/footer.php"); ?>
 
 </body>
 
