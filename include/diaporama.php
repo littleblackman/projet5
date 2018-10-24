@@ -3,8 +3,8 @@
             <div id="container_slider">
                 <div id="slider">
                     <figure>
-                        <img src="public/img/visuel_mode-emploi.jpg" id="diapo" alt="img1">
-                        <figcaption id="texte_diapo">Découvrez mes travaux</figcaption>
+                        <img src="public/img/diaporama/visuel_mode-emploi.jpg" id="diapo" alt="img1">
+                        <figcaption id="texte_diapo">Découvrez mes réalisations</figcaption>
                     </figure>
                 </div>
                 <div id="chevron"><a><i class="fa fa-arrow-left" aria-hidden="true" id="left"></i></a>

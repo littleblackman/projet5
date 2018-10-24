@@ -1,12 +1,15 @@
 <?php
+require "vendor/autoload.php";
 require('controller/backend.php');
+
+use \CarolineMoulin\Portfolio;
 
 try {
     if (isset($_GET['action'])) {
         require('view/backend/consolePanelView.php');
     }
     //vers la page d'ajout d'un nouveau projet
-    if ($_GET['action'] == 'addNewProject') {
+    elseif($_GET['action'] == 'addProject') {
         require('view/backend/newProjectView.php');
     }
     //Ecrire un nouveau projet depuis la zone admin
@@ -25,7 +28,7 @@ catch(Exception $e) {
     ?>
 
     <div id="errorPage">
-        <p><?php  echo 'Erreur !'; ?></p>
+        <p><?php echo 'Erreur !'; ?></p>
         <p>Retour à <a href="index.php">l'accueil</a></p>
     </div>
 

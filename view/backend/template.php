@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Portfolio de sites web">
     <meta name="author" content="Caroline Moulin">
-
-    <meta property="og:image" content="https://billet-simple-alaska.caroline-moulin.fr/public/images/adventure-alaska.jpg" />
-    <meta property="og:url" content="https://billet-simple-alaska.caroline-moulin.fr/" />
+    <!--Vcard Facebook-->
+    <meta property="og:image" content="https://caroline-moulin.fr/public/images/" /><!-- TO DO-->
+    <meta property="og:url" content="https://caroline-moulin.fr/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Portfolio de Caroline Moulin" />
     <meta property="og:description" content="Portfolio de sites web" />
@@ -24,30 +24,8 @@
 
 <div id="content" class="container-fluid">
     <div class="row">
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-3">
-
-            <div class="card my-4" id="quickNav">
-                <div class="card-body">
-                    <h5 class="card-header">Accès rapide</h5>
-                    <div class="input-group">
-                        <ul>
-                            <li><a href="console.php?action=admin">Accueil administration</a></li>
-                            <li><a href="console.php?action=addNewProject">Ajout d'un projet</a></li>
-                            <li><a href="console.php?action=manageProjects">Editer / supprimer un projet</a>
-                            <li><a href="console.php?action=addNewJob">Ajout d'une expérience</a></li>
-                            <li><a href="console.php?action=manageJobs">Editer / supprimer une expérience</a></li>
-                            <li><a href="console.php?action=addNewFormation">Ajout d'une formation</a></li>
-                            <li><a href="console.php?action=manageFormations">Gestion des formations</a></li>
-                            <li><a href="console.php?action=addNewSkill">Ajout d'une compétence</a></li>
-                            <li><a href="console.php?action=manageSkills">Editer / supprimer une compétence</a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Blog Entries Column -->
-        <div class="col-md-9">
+               <!-- Content -->
+        <div class="col-md-12">
             <h1 class="my-4"><strong>
                 </strong></h1>
             <h5>Vous êtes ici : <?php echo $title; ?> </h5>

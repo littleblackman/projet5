@@ -1,6 +1,6 @@
 <?php
 
-namespace Portfolio\Model;
+
 
 require_once("Manager.php");
 

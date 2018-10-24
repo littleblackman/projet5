@@ -10,7 +10,7 @@
                     <h5 class="card-header">Gestion des Projets</h5>
                     <div class="input-group">
                         <ul>
-                            <li><a href="console.php?action=addNewProject">Ajout d'un projet</a></li>
+                            <li><a href="console.php?action=addProject">Ajout d'un projet</a></li>
                             <li><a href="console.php?action=manageProjects">Editer / supprimer un projet</a>
                             </li>
                         </ul>
