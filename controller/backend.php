@@ -41,3 +41,17 @@ function listProjectsBack ()
     require ('view/backend/manageProjectsView.php');
 }
 
+function deleteProject($project_id)
+{
+    $postManager = new ProjectManager();
+    $affectedLines = $postManager->projectDelete($project_id);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer le projet');
+    }
+    else {
+        header('Location: console.php?action=manageProjects');
+    }
+}
+
+
+

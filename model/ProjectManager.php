@@ -36,4 +36,12 @@ class ProjectManager extends Manager
         $projects = $db->query('SELECT id, titleProject, description, techno, image, link FROM projects');
         return $projects;
     }
+
+    public function projectDelete($projectId) {
+        $db = $this->dbConnect();
+        $project = $db->prepare("DELETE FROM projects WHERE id=".$projectId);
+        $affectedLines = $project->execute(array($projectId));
+        return $affectedLines;
+    }
+
 }
