@@ -1,7 +1,6 @@
 <?php
 
-
-
+require "vendor/autoload.php";
 require_once('model/ProjectManager.php');
 
 function newProject($titleProject, $description, $techno, $image, $link)
@@ -18,7 +17,7 @@ function newProject($titleProject, $description, $techno, $image, $link)
 
 function viewEditProject ($projectId)
 {
-    $projectManager = new projectManager();
+    $projectManager = new ProjectManager();
     $project = $projectManager->getProject($projectId);
     require ('view/backend/editProjectView.php');
 }
@@ -33,5 +32,12 @@ function editProject ($id, $titleProject, $description, $techno, $image, $link)
     else{
         header('location: consolePanelView.php?action=project&id='.$id);
     }
+}
+
+function listProjectsBack ()
+{
+    $ProjectManager = new ProjectManager();
+    $projects = $ProjectManager->getProjects();
+    require ('view/backend/manageProjectsView.php');
 }
 

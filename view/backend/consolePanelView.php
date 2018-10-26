@@ -11,7 +11,7 @@
                     <div class="input-group">
                         <ul>
                             <li><a href="console.php?action=addProject">Ajout d'un projet</a></li>
-                            <li><a href="console.php?action=manageProjects">Editer / supprimer un projet</a>
+                            <li><a href="console.php?action=manageProject">Editer / supprimer un projet</a>
                             </li>
                         </ul>
                     </div>
@@ -25,7 +25,7 @@
                 <h5 class="card-header">Gestion des Expériences</h5>
                 <div class="input-group">
                     <ul>
-                        <li><a href="console.php?action=addNewJob">Ajout d'une expérience</a></li>
+                        <li><a href="console.php?action=addJob">Ajout d'une expérience</a></li>
                         <li><a href="console.php?action=manageJobs">Editer / supprimer une expérience</a>
                         </li>
                     </ul>
@@ -39,7 +39,7 @@
                 <h5 class="card-header">Gestion des Formations</h5>
                 <div class="input-group">
                     <ul>
-                        <li><a href="console.php?action=addNewFormation">Ajout d'une formation</a></li>
+                        <li><a href="console.php?action=addFormation">Ajout d'une formation</a></li>
                         <li><a href="console.php?action=manageFormations">Editer / supprimer une formation</a>
                         </li>
                     </ul>
@@ -53,7 +53,7 @@
                 <h5 class="card-header">Gestion des Compétences</h5>
                 <div class="input-group">
                     <ul>
-                        <li><a href="console.php?action=addNewSkill">Ajout d'une compétence</a></li>
+                        <li><a href="console.php?action=addSkill">Ajout d'une compétence</a></li>
                         <li><a href="console.php?action=manageSkills">Editer / supprimer une compétence</a>
                         </li>
                     </ul>

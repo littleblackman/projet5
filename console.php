@@ -2,7 +2,6 @@
 require "vendor/autoload.php";
 require('controller/backend.php');
 
-use \CarolineMoulin\Portfolio;
 
 try {
     if (isset($_GET['action'])) {
@@ -19,7 +18,12 @@ try {
         }else {
             throw new Exception('Tous les champs ne sont pas remplis');
         }
-    }else {
+    }
+    //vers la page de gestion des projets
+    elseif($_GET['action'] == 'manageProject'){
+        listProjectsBack();
+    }
+    else {
         require('view/backend/consolePanelView.php');
     }
 }
