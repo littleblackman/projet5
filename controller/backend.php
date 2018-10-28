@@ -2,17 +2,19 @@
 
 require "vendor/autoload.php";
 require_once('model/ProjectManager.php');
+require_once('model/TrainingManager.php');
 require_once('model/SkillManager.php');
 
+//Projets
 function newProject($titleProject, $description, $techno, $image, $link)
 {
-    $ProjectManager = new ProjectManager();
-    $affectedLines = $ProjectManager->addProject($titleProject, $description, $techno, $image, $link);
+    $projectManager = new ProjectManager();
+    $affectedLines = $projectManager->addProject($titleProject, $description, $techno, $image, $link);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter un projet');
     }
     else {
-        header('Location: consolePanelView.php?action=admin');
+        header('Location: console.php?action=manageProjects');
     }
 }
 
@@ -25,8 +27,8 @@ function viewEditProject ($projectId)
 
 function editProject ($id, $titleProject, $description, $techno, $image, $link)
 {
-    $ProjectManager = new ProjectManager();
-    $affectedLines = $ProjectManager->projectEdit($id, $titleProject, $description, $techno, $image, $link);
+    $projectManager = new ProjectManager();
+    $affectedLines = $projectManager->projectEdit($id, $titleProject, $description, $techno, $image, $link);
     if ($affectedLines === false) {
         throw new Exception('Impossible de modifier le projet');
     }
@@ -37,23 +39,75 @@ function editProject ($id, $titleProject, $description, $techno, $image, $link)
 
 function listProjectsBack ()
 {
-    $ProjectManager = new ProjectManager();
-    $projects = $ProjectManager->getProjects();
+    $projectManager = new ProjectManager();
+    $projects = $projectManager->getProjects();
     require ('view/backend/manageProjectsView.php');
 }
 
-function deleteProject($project_id)
+function deleteProject($projectId)
 {
     $projectManager = new ProjectManager();
-    $affectedLines = $projectManager->projectDelete($project_id);
+    $affectedLines = $projectManager->projectDelete($projectId);
     if ($affectedLines === false) {
         throw new Exception('Impossible de supprimer le projet');
     }
     else {
-        header('Location: console.php?action=manageProjects');
+        header('Location: console.php?action=manageProject');
+    }
+}
+//Expériences
+
+//formations
+function newTraining($graduate, $date, $institution)
+{
+    $trainingManager = new TrainingManager();
+    $affectedLines = $trainingManager->addTraining($graduate, $date, $institution);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter une formation');
+    }
+    else {
+        header('Location: console.php?action=manageTrainings');
     }
 }
 
+function viewEditTraining ($trainingId)
+{
+    $trainingManager = new TrainingManager();
+    $training = $trainingManager->getTraining($trainingId);
+    require ('view/backend/editTrainingView.php');
+}
+
+function editTraining ($id, $graduate, $date, $institution)
+{
+    $trainingManager = new TrainingManager();
+    $affectedLines = $trainingManager->trainingEdit($id, $graduate, $date, $institution);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de modifier la formation');
+    }
+    else{
+        header('location: consolePanelView.php?action=training&id='.$id);
+    }
+}
+
+function listTrainingsBack ()
+{
+    $trainingManager = new TrainingManager();
+    $trainings = $trainingManager->getTrainings();
+    require ('view/backend/manageTrainingsView.php');
+}
+
+function deleteTraining($trainingId)
+{
+    $trainingManager = new TrainingManager();
+    $affectedLines = $trainingManager->trainingDelete($trainingId);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer la formation');
+    }
+    else {
+        header('Location: console.php?action=manageTrainings');
+    }
+}
+//Compétences
 function newSkill($skill, $level)
 {
     $skillManager = new SkillManager();
@@ -62,7 +116,7 @@ function newSkill($skill, $level)
         throw new Exception('Impossible d\'ajouter une compétence');
     }
     else {
-        header('Location: consolePanelView.php?action=admin');
+        header('Location: console.php?action=manageSkills');
     }
 }
 

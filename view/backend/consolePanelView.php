@@ -11,7 +11,7 @@
                     <div class="input-group">
                         <ul>
                             <li><a href="console.php?action=addProject">Ajout d'un projet</a></li>
-                            <li><a href="console.php?action=manageProject">Editer / supprimer un projet</a>
+                            <li><a href="console.php?action=manageProjects">Editer / supprimer un projet</a>
                             </li>
                         </ul>
                     </div>
@@ -39,8 +39,8 @@
                 <h5 class="card-header">Gestion des Formations</h5>
                 <div class="input-group">
                     <ul>
-                        <li><a href="console.php?action=addFormation">Ajout d'une formation</a></li>
-                        <li><a href="console.php?action=manageFormations">Editer / supprimer une formation</a>
+                        <li><a href="console.php?action=addTraining">Ajout d'une formation</a></li>
+                        <li><a href="console.php?action=manageTrainings">Editer / supprimer une formation</a>
                         </li>
                     </ul>
                 </div>
