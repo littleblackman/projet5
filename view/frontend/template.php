@@ -18,7 +18,9 @@
     <meta name="twitter:creator" content="Caroline Moulin" />
 
     <title><?= $title ?></title>
-    <link href="public/css/stylish-portfolio.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <link href="public/css/full-slider.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -31,6 +33,7 @@
 </div>
 
 <?php include("include/footer.php"); ?>
+
 
 </body>
 
