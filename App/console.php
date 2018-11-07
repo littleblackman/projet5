@@ -1,7 +1,8 @@
 <?php
+namespace App;
 require "vendor/autoload.php";
-require('controller/backend.php');
 
+use App\controller\backend;
 
 try {
     if (isset($_GET['action'])) {
@@ -18,7 +19,7 @@ try {
             if (!empty($_POST['titleProject'])&& !empty($_POST['description'])&& !empty($_POST['techno'])&& !empty($_POST['image'])&& !empty($_POST['link'])) {
                 newProject($_POST['titleProject'], $_POST['description'], $_POST['techno'], $_POST['image'], $_POST['link']);
             }else {
-                throw new Exception('Tous les champs ne sont pas remplis');
+                throw new \Exception('Tous les champs ne sont pas remplis');
             }
         }
         //vers la page de gestion des projets
@@ -30,7 +31,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 viewEditProject($_GET['id']);
             }else {
-                throw new Exception('Aucun projet à éditer !');
+                throw new \Exception('Aucun projet à éditer !');
             }
         }
         //validation de l'edition des formations
@@ -38,7 +39,7 @@ try {
             if (isset($_GET['id']) && ($_GET['id'] > 0)){
                 editProject($_GET['id'], $_POST['titleProject'], $_POST['description'], $_POST['techno'], $_POST['image'], $_POST['link']);
             }else{
-                throw new Exception('Aucun id de projet');
+                throw new \Exception('Aucun id de projet');
             }
         }
         //Suppression d'une formation
@@ -46,7 +47,7 @@ try {
             if(isset($_GET['id']) && $_GET['id'] > 0){
                 deleteProject($_GET['id']);
             }else{
-                throw new Exception('Aucun id de projet');
+                throw new \Exception('Aucun id de projet');
             }
         }
 //Gestion des expériences
@@ -61,7 +62,7 @@ try {
             if (!empty($_POST['graduate'])&& !empty($_POST['date'])&& !empty($_POST['institution'])) {
                 newTraining($_POST['graduate'], $_POST['date'], $_POST['institution']);
             }else {
-                throw new Exception('Tous les champs ne sont pas remplis');
+                throw new \Exception('Tous les champs ne sont pas remplis');
             }
         }
         //vers la page de gestion des formations
@@ -73,7 +74,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 viewEditTraining($_GET['id']);
             }else {
-                throw new Exception('Aucune formation à éditer !');
+                throw new \Exception('Aucune formation à éditer !');
             }
         }
         //validation de l'edition des formations
@@ -81,7 +82,7 @@ try {
             if (isset($_GET['id']) && ($_GET['id'] > 0)){
                 editTraining($_GET['id'], $_POST['graduate'], $_POST['date'], $_POST['institution']);
             }else{
-                throw new Exception('Aucun id de formation');
+                throw new \Exception('Aucun id de formation');
             }
         }
         //Suppression d'une formation
@@ -89,7 +90,7 @@ try {
             if(isset($_GET['id']) && $_GET['id'] > 0){
                 deleteTraining($_GET['id']);
             }else{
-                throw new Exception('Aucun id de formation');
+                throw new \Exception('Aucun id de formation');
             }
         }
 
@@ -103,7 +104,7 @@ try {
             if (!empty($_POST['skill'])&& !empty($_POST['level'])) {
                 newSkill($_POST['skill'], $_POST['level']);
             }else {
-                throw new Exception('Tous les champs ne sont pas remplis');
+                throw new \Exception('Tous les champs ne sont pas remplis');
             }
         }
         //vers la page de gestion des compétences
@@ -115,7 +116,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 viewEditSkill($_GET['id']);
             }else {
-                throw new Exception('Aucune Compétence à éditer !');
+                throw new \Exception('Aucune Compétence à éditer !');
             }
         }
         //validation de l'edition des compétences
@@ -123,7 +124,7 @@ try {
             if (isset($_GET['id']) && ($_GET['id'] > 0)){
                 editSkill($_GET['id'], $_POST['skill'], $_POST['level']);
             }else{
-                throw new Exception('Aucun id de compétence');
+                throw new \Exception('Aucun id de compétence');
             }
         }
         //Suppression d'une compétences
@@ -131,7 +132,7 @@ try {
             if(isset($_GET['id']) && $_GET['id'] > 0){
                 deleteSkill($_GET['id']);
             }else{
-                throw new Exception('Aucun id de projet');
+                throw new \Exception('Aucun id de projet');
             }
         }
     }
@@ -140,7 +141,7 @@ try {
     }
 
 }
-catch(Exception $e) {
+catch(\Exception $e) {
     ob_start();
     ?>
 
