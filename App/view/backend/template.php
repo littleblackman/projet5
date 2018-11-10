@@ -18,8 +18,8 @@
     <meta name="twitter:creator" content="Caroline Moulin" />
 
     <title><?= $title ?></title>
-    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="public/css/full-slider.css" rel="stylesheet" />
+    <link href="App/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="App/public/css/full-slider.css" rel="stylesheet" />
 
 </head>
 <body>

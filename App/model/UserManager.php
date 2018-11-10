@@ -1,9 +1,9 @@
 <?php
 
-namespace App\model;
+namespace App\Model;
 require "vendor/autoload.php";
 
-use App\model\Manager;
+use App\Model\Manager;
 
 class UserManager extends Manager
 {

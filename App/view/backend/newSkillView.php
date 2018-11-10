@@ -21,5 +21,5 @@
 <?php
 $content = ob_get_clean();
 
-require('view/backend/template.php'); ?>
+require('App/view/backend/template.php'); ?>
 

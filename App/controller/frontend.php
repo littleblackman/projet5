@@ -1,23 +1,22 @@
 <?php
-namespace App\controller;
+namespace App\Controller;
 require "vendor/autoload.php";
 
+use App\Model\UserManager;
 use App\model\ProjectManager;
-use App\model\UserManager;
 use App\model\AuthManager;
 
-class frontend
+class Frontend
 {
-
-    public function listProjects()
+    public static function listProjects($projectId)
     {
         $projectManager = new ProjectManager();
-        $projects = $projectManager->getProjects();
-        require('view/frontend/hostView.php');
+        $project = $projectManager->getProject($projectId);
+        require('App/view/frontend/hostView.php');
     }
 
 //VERIFICATION DE L'EXISTENCE D'UN MEMBRE EN BDD
-    public function verifyMember($userPass, $userPseudo)
+    public static function verifyMember($userPass, $userPseudo)
     {
         $authManager = new AuthManager();
         $member = $authManager->getMember($userPseudo);
@@ -53,11 +52,10 @@ class frontend
             </div>
             <?php
             $content = ob_get_clean();
-            require('view/frontend/template.php');
+            require('App/view/frontend/template.php');
         }
     }
-
-    public function addMember($pseudo, $email, $pass, $pass2)
+    public static function addMember($pseudo, $email, $pass, $pass2)
     {
         try {
             $userManager = new UserManager();
@@ -85,11 +83,11 @@ class frontend
             }
         } catch (\Exception $e) {
             $info = $e->getMessage();
-            require('view/frontend/hostView.php');
+            require('App/view/frontend/hostView.php');
         }
     }
 
-    public function logout()
+    public static function logout()
     {
         session_destroy();
         header('location:index.php');

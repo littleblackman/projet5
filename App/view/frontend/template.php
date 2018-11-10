@@ -20,7 +20,8 @@
     <title><?= $title ?></title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-    <link href="public/css/full-slider.css" rel="stylesheet" />
+    <script src="App/public/js/main.js" async></script>
+    <link href="App/public/css/full-slider.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -32,7 +33,7 @@
 
 </div>
 
-<?php include("include/footer.php"); ?>
+<?php include("App/include/footer.php"); ?>
 
 
 </body>

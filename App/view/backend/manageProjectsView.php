@@ -17,7 +17,7 @@
                 <td><?php echo htmlspecialchars($data['titleProject']); ?></td>
                 <td><?php echo htmlspecialchars($data['description']); ?></td>
                 <td><?php echo htmlspecialchars($data['techno']); ?></td>
-                <td><?php echo htmlspecialchars($data['image']); ?></td>
+                <td><img src="<?php echo htmlspecialchars($data['image']); ?>"></td>
                 <td><?php echo htmlspecialchars($data['link']); ?></td>
                 <td><a href="index.php?action=editProjectView&amp;id=<?php echo $data['id']; ?>"><button type="button" class="btn btn-info">Editer</button></a></td>
                 <td><a href="index.php?action=deleteProject&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer ce projet ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
@@ -31,4 +31,4 @@
         </table>
     </div>
 <?php $content = ob_get_clean();
-require('view/backend/template.php'); ?>
+require('App/view/backend/template.php'); ?>

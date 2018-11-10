@@ -3,10 +3,15 @@
 namespace App\model;
 require "vendor/autoload.php";
 
-use App\model\manager;
-
 class ProjectManager extends Manager
 {
+    public function getProjects()
+    {
+        $db = $this->dbConnect();
+        $projects = $db->query('SELECT id, titleProject, description, techno, image, link FROM projects');
+        return $projects;
+    }
+
     public function addProject($titleProject, $description, $techno, $image, $link)
     {
         $db = $this->dbConnect();
@@ -18,7 +23,7 @@ class ProjectManager extends Manager
     public function getProject($projectId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, titleProject, description, techno, image, link FROM projects WHERE id = ?');
+        $req = $db->prepare('SELECT id, titleProject, image FROM projects WHERE id = ?');
         $req->execute(array($projectId));
         $project = $req->fetch();
         return $project;
@@ -30,13 +35,6 @@ class ProjectManager extends Manager
         $req = $db->prepare('UPDATE projects SET titleProject = ?, description = ? , techno = ? , image = ?, link = ? WHERE id = ?');
         $project = $req->execute(array($id, $titleProject, $description, $techno, $image, $link));
         return $project;
-    }
-
-    public function getProjects()
-    {
-        $db = $this->dbConnect();
-        $projects = $db->query('SELECT id, titleProject, description, techno, image, link FROM projects');
-        return $projects;
     }
 
     public function projectDelete($projectId) {
