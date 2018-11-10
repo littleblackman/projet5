@@ -1,12 +1,8 @@
-/*!
- * Start Bootstrap - Full Slider (https://startbootstrap.com/template-overviews/full-slider)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-full-slider/blob/master/LICENSE)
- */
+
 body{
     background-color: #ffffff;
 }
-#carousel-item {
+/*#carousel-item {
   height: 100vh;
   min-height: 300px;
   background: no-repeat center center scroll;
@@ -14,6 +10,10 @@ body{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}*/
+
+td img {
+    width: 40%;
 }
 
 .card{
@@ -46,4 +46,51 @@ footer{
 
 a {
     color: #0056b3;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel__container{
+    transition: transform 0.3s;
+    transform: (0,0,0);
+}
+
+.carousel__container::after{
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.carousel__item{
+    float: left;
+}
+
+.carousel__next, .carousel__prev{
+    width: 40px;
+    height: 40px;
+    background: #ffffff url("App/public/img/diaporama/right.png")center center no-repeat;
+    background-size: 20px 20px;
+    border-radius: 50%;
+    top: 50%;
+    margin-top: -20px;
+    right: 0px;
+    box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.carousel__next:hover, .carousel__prev:hover{
+    transform: scale(1.2);
+}
+
+.carousel__prev{
+    background-image: url("App/public/img/diaporama/left.png");
+    right: auto;
+    left: -20px;
+}
+
+.carousel__prev--hidden,.carousel__next--hidden{
+    opacity: 0;
 }
