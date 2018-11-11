@@ -26,11 +26,11 @@
 
 <div id="content" class="container-fluid">
     <div class="row">
-               <!-- Content -->
+        <!-- Content -->
         <div class="col-md-12">
             <h1 class="my-4"><strong>
                 </strong></h1>
-           <!-- <h5>Vous êtes ici : <?php echo $title; ?> </h5>-->
+            <!-- <h5>Vous êtes ici : <?php echo $title; ?> </h5>-->
             <?= $content ?>
             <p><a href="<?php echo $_SERVER["HTTP_REFERER"] ?>">Retour à la page Précédente</a></p>
 

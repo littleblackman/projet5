@@ -1,20 +1,21 @@
 <div class="card my-4">
-        <div class="container-fluid">
-            <div id="container_slider">
-                    <div class="carousel__container">
-                        <div class="carousel__item">
-                            <?php
-                            while ($data = $projects->fetch()) {
-                                ?>
-                                <div><?php echo htmlspecialchars($data['titleProject']); ?></div>
-                                <div><img src="<?php echo htmlspecialchars($data['image']); ?>"></div>
+    <div class="container-fluid">
+        <div id="container_slider">
+            <div class="carousel__container">
+                <div class="carousel__item">
+                    <?php
+                    while ($data = $projects->fetch()) {
+                        ?>
 
-                                <?php
-                            }
-                            $projects->closeCursor();
-                            ?>
-                        </div>
-                    </div>
-              </div>
+                        <div><a href="index.php?action=project&amp;id=<?= $data['id'] ?>" ><img src="<?php echo htmlspecialchars($data['image']); ?>"></a></div>
+
+                        <div class="carousel__title"><?php echo htmlspecialchars($data['titleProject']); ?></div>
+                        <?php
+                    }
+                    $projects->closeCursor();
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
+</div>

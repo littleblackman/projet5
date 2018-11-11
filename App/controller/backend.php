@@ -1,6 +1,8 @@
 <?php
-namespace App\controller;
+
+namespace App\Controller;
 require "vendor/autoload.php";
+
 use App\model\ProjectManager;
 use App\model\JobManager;
 use App\model\SkillManager;
@@ -8,7 +10,7 @@ use App\model\TrainingManager;
 
 class Backend
 {
-    //Projets
+//Projets
     public static function newProject($titleProject, $description, $techno, $image, $link)
     {
         $projectManager = new ProjectManager();
@@ -21,11 +23,11 @@ class Backend
         }
     }
 
-     public static function viewEditProject ($projectId)
+    public static function viewEditProject ($projectId)
     {
         $projectManager = new ProjectManager();
         $project = $projectManager->getProject($projectId);
-        require ('app/view/backend/editProjectView.php');
+        require ('App/view/backend/editProjectView.php');
     }
 
     public static function editProject ($id, $titleProject, $description, $techno, $image, $link)
@@ -209,4 +211,3 @@ class Backend
         }
     }
 }
-

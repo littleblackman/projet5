@@ -1,31 +1,29 @@
 <?php
+
 namespace App\Controller;
 require "vendor/autoload.php";
 
+use App\Model\ProjectManager;
+use App\Model\AuthManager;
 use App\Model\UserManager;
-use App\model\ProjectManager;
-use App\model\AuthManager;
 
 class Frontend
 {
-    public static function listProjects($projectId)
-    {
-        $projectManager = new ProjectManager();
-        $project = $projectManager->getProject($projectId);
-        require('App/view/frontend/hostView.php');
-    }
-    public static function project($projectId)
-    {
-        $projectManager = new ProjectManager();
-        $project = $projectManager->getProject($_GET['id']);
-        require('view/frontend/projectView.php');
-    }
-
-    public static function listProjectsBack ()
+    public static function listProjects()
     {
         $projectManager = new ProjectManager();
         $projects = $projectManager->getProjects();
-        require ('App/view/frontend/manageProjectsView.php');
+      require('App/view/frontend/hostView.php');
+    }
+
+    public static function project($projectId)
+    {
+        if(isset($projectId)){
+            $_GET['id'] = $projectId;
+        }
+        $projectManager = new ProjectManager();
+        $project = $projectManager->getProject($_GET['id']);
+        require('App/view/frontend/projectView.php');
     }
 
 //VERIFICATION DE L'EXISTENCE D'UN MEMBRE EN BDD

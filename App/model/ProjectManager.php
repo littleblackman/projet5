@@ -1,6 +1,6 @@
 <?php
 
-namespace App\model;
+namespace App\Model;
 require "vendor/autoload.php";
 
 class ProjectManager extends Manager
@@ -23,7 +23,7 @@ class ProjectManager extends Manager
     public function getProject($projectId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, titleProject, image FROM projects WHERE id = ?');
+        $req = $db->prepare('SELECT id, titleProject, description, techno, image, link FROM projects WHERE id = ?');
         $req->execute(array($projectId));
         $project = $req->fetch();
         return $project;
@@ -43,5 +43,4 @@ class ProjectManager extends Manager
         $affectedLines = $project->execute(array($projectId));
         return $affectedLines;
     }
-
 }

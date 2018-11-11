@@ -1,5 +1,5 @@
 <?php
-//namespace App;
+
 require "vendor/autoload.php";
 
 use App\Controller\Backend;
@@ -10,7 +10,7 @@ $myBack = new backend();
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listProjects') {
-            $myFront::listProjects($projectId);
+            $myFront::listProjects();
         }
 //Gestion des projets
         //vers la page d'ajout de projet
@@ -56,7 +56,7 @@ try {
 //Gestion des expériences
         //vers la page d'ajout de compétence
         elseif($_GET['action'] == 'addJob'){
-            require('App\view/backend/newJobView.php');
+            require('App/view/backend/newJobView.php');
         }
         //Ajout d'une compétence depuis la zone admin
         elseif($_GET['action'] == 'newJob'){
@@ -140,7 +140,7 @@ try {
 //Gestion des compétences
         //vers la page d'ajout de compétence
         elseif($_GET['action'] == 'addSkill'){
-            require('App\view/backend/newSkillView.php');
+            require('App/view/backend/newSkillView.php');
         }
         //Ajout d'une compétence depuis la zone admin
         elseif($_GET['action'] == 'newSkill'){
@@ -196,5 +196,3 @@ catch(\Exception $e) {
     $content = ob_get_clean();
     require('App/view/backend/template.php');
 }
-
-

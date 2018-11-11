@@ -1,7 +1,7 @@
 <?php
-namespace App\model;
+
+namespace App\Model;
 require "vendor/autoload.php";
-use App\model\manager;
 
 class TrainingManager extends Manager
 {

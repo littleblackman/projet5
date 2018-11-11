@@ -3,8 +3,6 @@
 namespace App\Model;
 require "vendor/autoload.php";
 
-use App\Model\Manager;
-
 class UserManager extends Manager
 {
     public function checkPseudo($pseudoToCheck)
@@ -14,7 +12,6 @@ class UserManager extends Manager
         $req = $db->prepare('SELECT COUNT(*) AS pseudo FROM users WHERE pseudo = ?');
         $req->execute(array($pseudoToCheck));
         $pseudo = $req->fetch();
-
         return $pseudo['pseudo'];
     }
 

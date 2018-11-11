@@ -6,14 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\Backend' => $baseDir . '/App/Controller/Backend.php',
     'App\\Controller\\Frontend' => $baseDir . '/App/Controller/Frontend.php',
+    'App\\Model\\AuthManager' => $baseDir . '/App/Model/AuthManager.php',
+    'App\\Model\\Exception' => $baseDir . '/App/Model/Exception.php',
     'App\\Model\\JobManager' => $baseDir . '/App/Model/JobManager.php',
+    'App\\Model\\Manager' => $baseDir . '/App/Model/Manager.php',
+    'App\\Model\\ProjectManager' => $baseDir . '/App/Model/ProjectManager.php',
+    'App\\Model\\SkillManager' => $baseDir . '/App/Model/SkillManager.php',
+    'App\\Model\\TrainingManager' => $baseDir . '/App/Model/TrainingManager.php',
     'App\\Model\\UserManager' => $baseDir . '/App/Model/UserManager.php',
-    'App\\controller\\Backend' => $baseDir . '/App/Controller/Backend.php',
-    'App\\model\\AuthManager' => $baseDir . '/App/Model/AuthManager.php',
-    'App\\model\\Exception' => $baseDir . '/App/Model/Exception.php',
-    'App\\model\\Manager' => $baseDir . '/App/Model/Manager.php',
-    'App\\model\\ProjectManager' => $baseDir . '/App/Model/ProjectManager.php',
-    'App\\model\\SkillManager' => $baseDir . '/App/Model/SkillManager.php',
-    'App\\model\\TrainingManager' => $baseDir . '/App/Model/TrainingManager.php',
 );

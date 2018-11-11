@@ -1,8 +1,7 @@
 <?php
-namespace App\model;
-require "vendor/autoload.php";
 
-use App\model\Manager;
+namespace App\Model;
+require "vendor/autoload.php";
 
 class SkillManager extends Manager
 {

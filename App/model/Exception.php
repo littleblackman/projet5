@@ -1,6 +1,7 @@
 <?php
 
-namespace App\model;
+namespace App\Model;
+
 
 class Exception
 {
@@ -19,4 +20,5 @@ class Exception
     /* Remplacable */
     function __construct ($message = NULL, $code = 0);
     function __toString(); // Chaîne formatée pour l'affichage.
+}
 }

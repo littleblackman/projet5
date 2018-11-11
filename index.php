@@ -1,18 +1,17 @@
 <?php
-//namespace App;
+
 require "vendor/autoload.php";
 
 use App\Controller\Frontend;
 
 $myFront = new Frontend();
-
 $accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listProjects') {
-            $myFront::listProjectsBack();
+            $myFront::listProjects();
         }
-//Accueil
+        //Accueil
         //Login d'un membre existant
         elseif ($_GET['action'] == 'login'){
             if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
@@ -24,7 +23,7 @@ try {
         }
         //redirection vers la View de creation de membre
         elseif ($_GET['action'] == 'creationUser') {
-            require('App/view/frontend/newAccountView.php');
+        require('App/view/frontend/newAccountView.php');
         }
         //Creation d'un nouveau membre
         elseif ($_GET['action'] == 'addMember') {
@@ -34,41 +33,41 @@ try {
                 && isset($_POST['pass2']) && !empty($_POST['pass2']))
             {
 
-                $myFront::addMember($_POST['pseudo'], $_POST['email'], $_POST['pass'], $_POST['pass2']);			
+                $myFront::addMember($_POST['pseudo'], $_POST['email'], $_POST['pass'], $_POST['pass2']);
 //                \App\controller\frontend::addMember($_POST['pseudo'], $_POST['email'], $_POST['pass'], $_POST['pass2']  );
             }else {
-               throw new \Exception('Tous les champs ne sont pas remplis');
+                throw new \Exception('Tous les champs ne sont pas remplis');
             }
         }
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             $myFront::logout();
         }
-    }
 //Affichage projet complet
-    elseif ($_GET['action'] == 'project') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            $myFront::project();
+        elseif ($_GET['action'] == 'project') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $myFront::project($projectId);
+            }
         }
         else {
-            throw new Exception('Aucun identifiant de projet envoyé');
-        }
-    }
-    else {
-        require('App/view/frontend/hostView.php');
-    }
-
+    require('App/view/frontend/hostView.php');
 }
+    }else {
+        $myFront::listProjects();
+     // require('App/view/frontend/hostView.php');
+    }
+}
+
 catch(\Exception $e) {
-    ob_start();
-    ?>
+        ob_start();
+        ?>
 
-    <div id="errorPage">
-        <p><?php  echo 'Erreur : ' . $accesdenied; ?></p>
-        <p>Retour à <a href="index.php">l'accueil</a></p>
-    </div>
+        <div id="errorPage">
+            <p><?php  echo 'Erreur : ' . $accesdenied; ?></p>
+            <p>Retour à <a href="index.php">l'accueil</a></p>
+        </div>
 
-    <?php
-    $content = ob_get_clean();
-    require('App/view/frontend/template.php');
-}
+        <?php
+        $content = ob_get_clean();
+        require('App/view/frontend/template.php');
+    }

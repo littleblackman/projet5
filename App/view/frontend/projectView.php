@@ -1,21 +1,31 @@
-<?php $title = htmlspecialchars($project['title']); ?>
+<?php $title = htmlspecialchars($project['titleProject']); ?>
 
 <?php ob_start(); ?>
-<h1>Découvrez mon nouveau roman</h1>
-<p><a href="index.php">Retour à l'accueil</a></p>
+    <div class="card my-4">
+        <div class="container-fluid">
+            <div id="container_slider">
+                <div class="project">
+                    <img src="<?= htmlspecialchars($project['image']) ?>">
 
-<div id="projects">
-    <h3>
-        <?= htmlspecialchars($project['titleProject']) ?>
-        <em>le <?= $project['creation_date_fr'] ?></em>
-    </h3>
+                    <h3>
+                        <?= htmlspecialchars($project['titleProject']) ?>
+                    </h3>
 
-    <p>
-        <?= nl2br($project['content']) ?>
-    </p>
-</div>
+                    <p>
+                        <?= nl2br($project['description']) ?>
+                    </p>
+                    <p>
+                        <?= nl2br($project['techno']) ?>
+                    </p>
+                    <p>
+                        <a href="<?= nl2br($project['link']) ?>" ></a>
+                    </p>
+                    <p><a href="index.php">Retour à l'accueil</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php
-
 $content = ob_get_clean();
 
 require('template.php'); ?>
