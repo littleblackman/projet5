@@ -4,14 +4,14 @@
                     <div class="carousel__container">
                         <div class="carousel__item">
                             <?php
-                            while ($data = $project->fetch()) {
+                            while ($data = $projects->fetch()) {
                                 ?>
                                 <div><?php echo htmlspecialchars($data['titleProject']); ?></div>
                                 <div><img src="<?php echo htmlspecialchars($data['image']); ?>"></div>
 
                                 <?php
                             }
-                            $project->closeCursor();
+                            $projects->closeCursor();
                             ?>
                         </div>
                     </div>

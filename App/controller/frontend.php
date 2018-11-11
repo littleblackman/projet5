@@ -14,6 +14,19 @@ class Frontend
         $project = $projectManager->getProject($projectId);
         require('App/view/frontend/hostView.php');
     }
+    public static function project($projectId)
+    {
+        $projectManager = new ProjectManager();
+        $project = $projectManager->getProject($_GET['id']);
+        require('view/frontend/projectView.php');
+    }
+
+    public static function listProjectsBack ()
+    {
+        $projectManager = new ProjectManager();
+        $projects = $projectManager->getProjects();
+        require ('App/view/frontend/manageProjectsView.php');
+    }
 
 //VERIFICATION DE L'EXISTENCE D'UN MEMBRE EN BDD
     public static function verifyMember($userPass, $userPseudo)
