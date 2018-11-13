@@ -3,14 +3,62 @@
 namespace App\Controller;
 require "vendor/autoload.php";
 
-use App\model\ProjectManager;
-use App\model\JobManager;
-use App\model\SkillManager;
-use App\model\TrainingManager;
+use App\Model\ProjectManager;
+use App\Model\JobManager;
+use App\Model\SkillManager;
+use App\Model\TrainingManager;
+use App\Model\AuthManager;
+
+session_start();
 
 class Backend
 {
-//Projets
+//VERIFICATION DE L'EXISTENCE D'UN MEMBRE EN BDD
+    public static function verifyMember($userPass, $userPseudo)
+    {
+        $authManager = new AuthManager();
+        $member = $authManager->getMember($userPseudo);
+        //comparaison du mdp saisie avec le mdp hash de la bdd
+        $isPasswordCorrect = password_verify($userPass, $member['pass']);
+        //Si $member=false le membre n'est pas existant en bdd
+        try{
+            if (!$member)
+            {
+                throw new \Exception('Mauvais utilisateur ou mot de passe!');
+            }
+            else
+                //Le membre existe 2 possibilité le mdp correspond
+            {
+                if ($isPasswordCorrect) {
+                    $_SESSION['id'] = $member['id'];
+                    $_SESSION['pseudo'] = $member['pseudo'];
+                    $_SESSION['pass'] = $member['pass'];
+                    $_SESSION['email'] = $member['email'];
+                    $_SESSION['userLevel'] = $member['userLevel'];
+                    //on redirige vers la page d'accueil qui prendra en compte les variable de session
+                    header('location:console.php');
+                }
+                //Le mdp ne correspond pas
+                else {
+                    throw new \Exception('Mauvais utilisateur ou mot de passe!');
+                }
+            }
+        }
+        catch(\Exception $e){
+            $authInfo = $e->getMessage();
+            ob_start();
+            ?>
+            <div id="wrongPass">
+                <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+                <?php include('include/login.php');?>
+            </div>
+            <?php
+            $content = ob_get_clean();
+            require('App/view/backend/template.php');
+        }
+    }
+
+    //Projets
     public static function newProject($titleProject, $description, $techno, $image, $link)
     {
         $projectManager = new ProjectManager();
@@ -210,4 +258,11 @@ class Backend
             header('Location: console.php?action=manageSkills');
         }
     }
+
+    public static function logout()
+    {
+        session_destroy ();
+        header('location:index.php');
+    }
 }
+

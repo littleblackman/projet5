@@ -3,6 +3,8 @@
 namespace App\Model;
 require "vendor/autoload.php";
 
+use App\Model\Manager;
+
 class ProjectManager extends Manager
 {
     public function getProjects()

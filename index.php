@@ -5,13 +5,20 @@ require "vendor/autoload.php";
 use App\Controller\Frontend;
 
 $myFront = new Frontend();
+
 $accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listProjects') {
             $myFront::listProjects();
         }
-        //Accueil
+        //Affichage projet complet
+        elseif ($_GET['action'] == 'project') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $projectId = $_GET['id'];
+                $myFront::project($projectId);
+            }
+        }
         //Login d'un membre existant
         elseif ($_GET['action'] == 'login'){
             if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
@@ -39,16 +46,20 @@ try {
                 throw new \Exception('Tous les champs ne sont pas remplis');
             }
         }
+        //connexion d'un membre
+        elseif ($_GET['action'] == 'login'){
+            if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
+            {
+                $myFront::verifyMember($_POST['userPass'], $_POST['userPseudo']);
+            }else{
+                throw new Exception('Tous les champs ne sont pas remplis');
+            }
+        }
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             $myFront::logout();
         }
-//Affichage projet complet
-        elseif ($_GET['action'] == 'project') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $myFront::project($projectId);
-            }
-        }
+
         else {
     require('App/view/frontend/hostView.php');
 }

@@ -2,15 +2,6 @@
 body{
     background-color: #ffffff;
 }
-/*#carousel-item {
-  height: 100vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
 
 td img {
     width: 40%;
@@ -40,6 +31,15 @@ td img {
     padding: 1.25rem;
 }
 
+.project img{
+    max-width: 90%;
+    padding-left: 5%;
+}
+
+.project h3 {
+    text-align: center;
+}
+
 footer{
     text-align: center;
 }
@@ -47,50 +47,129 @@ footer{
 a {
     color: #0056b3;
 }
+/**
+Map
+**/
+.map{
+    display: flex;
+}
 
+#map_text{
+    padding-top: 5%;
+    padding-left: 5%;
+}
+
+
+.item {
+    margin: 40px 10px;
+    background-color: #8f82ab;
+    box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
+    transition: transform 0.3s;
+    transform: translate3d(0, -1px, 0);
+}
+
+.item:hover  {
+    transform: translate3d(0, -10px, 0);
+}
+
+.item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.item__body {
+    padding: 25px;
+}
+
+.item__title {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #232323;
+}
+
+.items {
+    position: relative;
+}
+
+/**
+CAROUSEL
+ */
 .carousel {
     position: relative;
 }
 
-.carousel__container{
+.carousel__container {
     transition: transform 0.3s;
-    transform: (0,0,0);
+    transform: translate3d(0, 0, 0);
 }
 
-.carousel__container::after{
+.carousel__container::after {
     content: '';
     clear: both;
     display: table;
 }
 
-.carousel__item{
+.carousel__item {
     float: left;
 }
 
-.carousel__next, .carousel__prev{
+.carousel__next, .carousel__prev {
+    position: absolute;
     width: 40px;
     height: 40px;
-    background: #ffffff url("App/public/img/diaporama/right.png")center center no-repeat;
-    background-size: 20px 20px;
+    background: #FFF url(App/Public/img/diaporama/right.svg) center center no-repeat;
+    background-size:  20px 20px;
     border-radius: 50%;
     top: 50%;
     margin-top: -20px;
-    right: 0px;
+    right: -20px;
     box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
-.carousel__next:hover, .carousel__prev:hover{
-    transform: scale(1.2);
+.carousel__next:hover, .carousel__prev:hover {
+    transform: scale(1.2)
 }
 
-.carousel__prev{
-    background-image: url("App/public/img/diaporama/left.png");
+.carousel__prev {
+    background-image: url(App/Public/img/diaporama/left.svg);
     right: auto;
     left: -20px;
 }
 
-.carousel__prev--hidden,.carousel__next--hidden{
+.carousel__next--hidden, .carousel__prev--hidden {
     opacity: 0;
+}
+
+.carousel__pagination {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: none;
+}
+
+.carousel__pagination__button {
+    background-color: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+    box-shadow: 0 2px 5px #3232321a;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.carousel__pagination__button--active, .carousel__pagination__button:hover {
+    transform: scale(1.4);
+}
+
+@media screen and (min-width: 800px) {
+    .carousel__pagination {
+        display: block;
+    }
 }

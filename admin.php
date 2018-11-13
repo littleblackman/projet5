@@ -5,7 +5,7 @@
     <h1>
         <!--Mettre une image ? -->
     </h1>
-    <form name="loginform" id="loginform" action="backend.php?action=login" method="post">
+    <form name="loginform" id="loginform" action="console.php?action=admin" method="post">
             <p>
                 <label for="user_login">
                     Identifiant <br>

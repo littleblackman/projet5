@@ -15,13 +15,13 @@
         </div>
         <div>
             <label>Technologies</label><br>
-            <input type="checkbox" name="origine" value="HTML5" id="HTML5"><label>HTML5</label>
-            <input type="checkbox" name="origine" value="CSS3" id="CSS3"><label>CSS3</label>
-            <input type="checkbox" name="origine" value="WordPress" id="WordPress"><label>WordPress</label>
-            <input type="checkbox" name="origine" value="JavaScript" id="JavaScript"><label>JavaScript</label>
-            <input type="checkbox" name="origine" value="PHP" id="PHP"><label>PHP</label>
-            <input type="checkbox" name="origine" value="MySQL" id="MySQL"><label>MySQL</label>
-            <input type="checkbox" name="origine" value="Bootstrap" id="Bootstrap"><label>Bootstrap</label>
+            <input type="checkbox" name="techno" value="HTML5" id="HTML5"><label>HTML5</label>
+            <input type="checkbox" name="techno" value="CSS3" id="CSS3"><label>CSS3</label>
+            <input type="checkbox" name="techno" value="WordPress" id="WordPress"><label>WordPress</label>
+            <input type="checkbox" name="techno" value="JavaScript" id="JavaScript"><label>JavaScript</label>
+            <input type="checkbox" name="techno" value="PHP" id="PHP"><label>PHP</label>
+            <input type="checkbox" name="techno" value="MySQL" id="MySQL"><label>MySQL</label>
+            <input type="checkbox" name="techno" value="Bootstrap" id="Bootstrap"><label>Bootstrap</label>
         </div>
         <div class="form-group">
             <label>Image</label>

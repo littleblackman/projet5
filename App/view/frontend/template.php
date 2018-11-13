@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script src="App/public/js/main.js" async></script>
+    <script src="https://use.fontawesome.com/854d45b8f4.js"></script>
     <link href="App/public/css/full-slider.css" rel="stylesheet" />
+ <!--   <script src='https://www.google.com/recaptcha/api.js'></script>-->
 </head>
 <body>
 

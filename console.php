@@ -7,19 +7,41 @@ use App\Controller\Frontend;
 $myFront = new Frontend();
 $myBack = new backend();
 
+$accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
+
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listProjects') {
             $myFront::listProjects();
         }
+        //Acces a la zone d'administration
+        elseif ($_GET['action'] == 'admin'){
+            if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
+            {
+                if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                        $myBack::verifyMember($_POST['userPass'], $_POST['userPseudo']);
+                        require ('App/View/backend/consolePanelView.php');
+                    }else{
+                        throw new Exception('Tous les champs ne sont pas remplis');
+                    }
+                    }else{
+                throw new Exception($accesdenied);
+            }
+        }
 //Gestion des projets
         //vers la page d'ajout de projet
-        elseif($_GET['action'] == 'addProject'){
-            require('App/view/backend/newProjectView.php');
+        elseif($_GET['action'] == 'addProject') {
+            if (isset($_SESSION['level']) && $_SESSION['level'] == 'admin') {
+                require('App/view/backend/newProjectView.php');
+            } else {
+                throw new Exception($accesdenied);
+            }
         }
         //Ajout d'une compétence depuis la zone admin
         elseif($_GET['action'] == 'newProject'){
             if (!empty($_POST['titleProject'])&& !empty($_POST['description'])&& !empty($_POST['techno'])&& !empty($_POST['image'])&& !empty($_POST['link'])) {
+
+
                 $myBack::newProject($_POST['titleProject'], $_POST['description'], $_POST['techno'], $_POST['image'], $_POST['link']);
             }else {
                 throw new \Exception('Tous les champs ne sont pas remplis');
@@ -27,155 +49,243 @@ try {
         }
         //vers la page de gestion des projets
         elseif($_GET['action'] == 'manageProjects'){
-            $myBack::listProjectsBack();
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                $myBack::listProjectsBack();
+        }else{
+                throw new Exception($accesdenied);
+            }
         }
         //Vers la page d'edition de formations
         elseif ($_GET['action'] == 'editProjectView') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $myBack::viewEditProject($_GET['id']);
-            }else {
-                throw new \Exception('Aucun projet à éditer !');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $myBack::viewEditProject($_GET['id']);
+                }else {
+                    throw new \Exception('Aucun projet à éditer !');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //validation de l'edition des formations
         elseif($_GET['action'] == 'editProject'){
-            if (isset($_GET['id']) && ($_GET['id'] > 0)){
-                $myBack::editProject($_GET['id'], $_POST['titleProject'], $_POST['description'], $_POST['techno'], $_POST['image'], $_POST['link']);
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (isset($_GET['id']) && ($_GET['id'] > 0)){
+                    $myBack::editProject($_GET['id'], $_POST['titleProject'], $_POST['description'], $_POST['techno'], $_POST['image'], $_POST['link']);
+                }else{
+                    throw new \Exception('Aucun id de projet');
+                }
             }else{
-                throw new \Exception('Aucun id de projet');
+                throw new Exception($accesdenied);
             }
         }
         //Suppression d'une formation
         elseif($_GET['action'] == 'deleteProject'){
-            if(isset($_GET['id']) && $_GET['id'] > 0){
-                $myBack::deleteProject($_GET['id']);
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $myBack::deleteProject($_GET['id']);
+                }else{
+                    throw new \Exception('Aucun id de projet');
+                }
             }else{
-                throw new \Exception('Aucun id de projet');
+                throw new Exception($accesdenied);
             }
         }
 //Gestion des expériences
         //vers la page d'ajout de compétence
         elseif($_GET['action'] == 'addJob'){
-            require('App/view/backend/newJobView.php');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                require('App/view/backend/newJobView.php');
+            }else{
+                throw new Exception($accesdenied);
+            }
         }
         //Ajout d'une compétence depuis la zone admin
         elseif($_GET['action'] == 'newJob'){
-            if (!empty($_POST['entreprise'])&& !empty($_POST['logo'])&& !empty($_POST['missions'])&& !empty($_POST['dateStart'])&& !empty($_POST['dateEnd'])) {
-                $myBack::newJob($_POST['entreprise'], $_POST['logo'], $_POST['missions'], $_POST['dateStart'], $_POST['dateEnd']);
-            }else {
-                throw new \Exception('Tous les champs ne sont pas remplis');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (!empty($_POST['entreprise'])&& !empty($_POST['logo'])&& !empty($_POST['missions'])&& !empty($_POST['dateStart'])&& !empty($_POST['dateEnd'])) {
+                    $myBack::newJob($_POST['entreprise'], $_POST['logo'], $_POST['missions'], $_POST['dateStart'], $_POST['dateEnd']);
+                }else {
+                    throw new \Exception('Tous les champs ne sont pas remplis');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //vers la page de gestion des compétences
         elseif($_GET['action'] == 'manageJobs'){
-            $myBack::listJobsBack();
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                $myBack::listJobsBack();
+            }else{
+                throw new Exception($accesdenied);
+            }
         }
         //Vers la page d'edition d'expérience
         elseif ($_GET['action'] == 'editJobView') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $myBack::viewEditJob($_GET['id']);
-            }else {
-                throw new \Exception('Aucune expérience à éditer !');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $myBack::viewEditJob($_GET['id']);
+                }else {
+                    throw new \Exception('Aucune expérience à éditer !');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //validation de l'edition des Expérences
         elseif($_GET['action'] == 'editJob'){
-            if (isset($_GET['id']) && ($_GET['id'] > 0)){
-                $myBack::editJob($_GET['id'], $_POST['entreprise'], $_POST['logo'], $_POST['missions'], $_POST['dateStart'], $_POST['dateEnd']);
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (isset($_GET['id']) && ($_GET['id'] > 0)){
+                    $myBack::editJob($_GET['id'], $_POST['entreprise'], $_POST['logo'], $_POST['missions'], $_POST['dateStart'], $_POST['dateEnd']);
+                }else{
+                    throw new \Exception('Aucun id d\'expérience');
+                }
             }else{
-                throw new \Exception('Aucun id d\'expérience');
+                throw new Exception($accesdenied);
             }
         }
         //Suppression d'une compétences
         elseif($_GET['action'] == 'deleteJob'){
-            if(isset($_GET['id']) && $_GET['id'] > 0){
-                $myBack::deleteJob($_GET['id']);
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $myBack::deleteJob($_GET['id']);
+                }else{
+                    throw new \Exception('Aucun id d\'expérience');
+                }
             }else{
-                throw new \Exception('Aucun id d\'expérience');
+                throw new Exception($accesdenied);
             }
         }
 
 //Gestion des formations
         //vers la page d'ajout de formation
         elseif($_GET['action'] == 'addTraining'){
-            require('App/view/backend/newTrainingView.php');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                require('App/view/backend/newTrainingView.php');
+            }else{
+                throw new Exception($accesdenied);
+            }
         }
         //Ajout d'une compétence depuis la zone admin
         elseif($_GET['action'] == 'newTraining'){
-            if (!empty($_POST['graduate'])&& !empty($_POST['date'])&& !empty($_POST['institution'])) {
-                $myBack::newTraining($_POST['graduate'], $_POST['date'], $_POST['institution']);
-            }else {
-                throw new \Exception('Tous les champs ne sont pas remplis');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (!empty($_POST['graduate'])&& !empty($_POST['date'])&& !empty($_POST['institution'])) {
+                    $myBack::newTraining($_POST['graduate'], $_POST['date'], $_POST['institution']);
+                }else {
+                    throw new \Exception('Tous les champs ne sont pas remplis');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //vers la page de gestion des formations
         elseif($_GET['action'] == 'manageTrainings'){
-            $myBack::listTrainingsBack();
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                $myBack::listTrainingsBack();
+            }else{
+                throw new Exception($accesdenied);
+            }
         }
         //Vers la page d'edition de formations
         elseif ($_GET['action'] == 'editTrainingView') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $myBack::viewEditTraining($_GET['id']);
-            }else {
-                throw new \Exception('Aucune formation à éditer !');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $myBack::viewEditTraining($_GET['id']);
+                }else {
+                    throw new \Exception('Aucune formation à éditer !');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //validation de l'edition des formations
         elseif($_GET['action'] == 'editTraining'){
             if (isset($_GET['id']) && ($_GET['id'] > 0)){
+                if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 $myBack::editTraining($_GET['id'], $_POST['graduate'], $_POST['date'], $_POST['institution']);
             }else{
                 throw new \Exception('Aucun id de formation');
             }
+        }else{
+                throw new Exception($accesdenied);
+            }
         }
         //Suppression d'une formation
         elseif($_GET['action'] == 'deleteTraining'){
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
             if(isset($_GET['id']) && $_GET['id'] > 0){
                 $myBack::deleteTraining($_GET['id']);
             }else{
                 throw new \Exception('Aucun id de formation');
+            }
+        }else{
+                throw new Exception($accesdenied);
             }
         }
 
 //Gestion des compétences
         //vers la page d'ajout de compétence
         elseif($_GET['action'] == 'addSkill'){
-            require('App/view/backend/newSkillView.php');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                require('App/view/backend/newSkillView.php');
+            }else{
+                throw new Exception($accesdenied);
+            }
         }
         //Ajout d'une compétence depuis la zone admin
         elseif($_GET['action'] == 'newSkill'){
-            if (!empty($_POST['skill'])&& !empty($_POST['level'])) {
-                $myBack::newSkill($_POST['skill'], $_POST['level']);
-            }else {
-                throw new \Exception('Tous les champs ne sont pas remplis');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (!empty($_POST['skill'])&& !empty($_POST['level'])) {
+                    $myBack::newSkill($_POST['skill'], $_POST['level']);
+                }else {
+                    throw new \Exception('Tous les champs ne sont pas remplis');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //vers la page de gestion des compétences
         elseif($_GET['action'] == 'manageSkills'){
-            $myBack::listSkillsBack();
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                $myBack::listSkillsBack();
+            }else{
+                throw new Exception($accesdenied);
+            }
         }
         //Vers la page d'edition de compétences
         elseif ($_GET['action'] == 'editSkillView') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $myBack::viewEditSkill($_GET['id']);
-            }else {
-                throw new \Exception('Aucune Compétence à éditer !');
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $myBack::viewEditSkill($_GET['id']);
+                }else {
+                    throw new \Exception('Aucune Compétence à éditer !');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //validation de l'edition des compétences
         elseif($_GET['action'] == 'editSkill'){
-            if (isset($_GET['id']) && ($_GET['id'] > 0)){
-                $myBack::editSkill($_GET['id'], $_POST['skill'], $_POST['level']);
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                if (isset($_GET['id']) && ($_GET['id'] > 0)){
+                    $myBack::editSkill($_GET['id'], $_POST['skill'], $_POST['level']);
+                }else{
+                    throw new \Exception('Aucun id de compétence');
+                }
             }else{
-                throw new \Exception('Aucun id de compétence');
+                throw new Exception($accesdenied);
             }
         }
         //Suppression d'une compétences
         elseif($_GET['action'] == 'deleteSkill'){
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
             if(isset($_GET['id']) && $_GET['id'] > 0){
                 $myBack::deleteSkill($_GET['id']);
             }else{
                 throw new \Exception('Aucun id de projet');
+            }
+        }else{
+                throw new Exception($accesdenied);
             }
         }
     }

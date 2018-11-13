@@ -12,13 +12,14 @@ class UserManager extends Manager
         $req = $db->prepare('SELECT COUNT(*) AS pseudo FROM users WHERE pseudo = ?');
         $req->execute(array($pseudoToCheck));
         $pseudo = $req->fetch();
+
         return $pseudo['pseudo'];
     }
 
     public function pushMember($pseudo, $pass_hash, $email)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO users (pseudo, pass, email, inscription_date) VALUES(:pseudo, :pass, :email, CURDATE())');
+        $req = $db->prepare('INSERT INTO users(pseudo, pass, email, inscription_date) VALUES(:pseudo, :pass, :email, CURDATE())');
         //On rempli la BDD avec les infos du formulaire
         $req->execute(array(
             'pseudo' => $pseudo,
