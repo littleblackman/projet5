@@ -18,6 +18,8 @@ try {
                 $projectId = $_GET['id'];
                 $myFront::project($projectId);
             }
+        }elseif ($_GET['action'] == 'path') {
+            $myFront::path();
         }
         //Login d'un membre existant
         elseif ($_GET['action'] == 'login'){
