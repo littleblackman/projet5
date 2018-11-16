@@ -11,8 +11,8 @@
                     <p> <?php echo htmlspecialchars($data['entreprise']); ?>
                         <img src="<?php echo htmlspecialchars($data['logo']); ?>" alt="logo"></p>
                     <p><?php echo htmlspecialchars($data['missions']); ?></p>
-                    <p><?php echo htmlspecialchars($data['dateStart']); ?>
-                        <?php echo htmlspecialchars($data['dateEnd']); ?></p>
+                    <p>De <?php echo htmlspecialchars($data['dateStart_fr']); ?>
+                       à <?php echo htmlspecialchars($data['dateEnd_fr']); ?></p>
                     <?php
                 }
                 $jobs->closeCursor();

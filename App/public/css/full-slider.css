@@ -59,7 +59,9 @@ Map
     padding-left: 5%;
 }
 
-
+/**
+diaporama
+ */
 .item {
     margin: 40px 10px;
     background-color: #8f82ab;
@@ -172,4 +174,15 @@ CAROUSEL
     .carousel__pagination {
         display: block;
     }
+}
+
+.contact{
+    display: flex;
+}
+
+.login{
+    padding-left: 30%;
+}
+.creation{
+    padding-left: 10%;
 }

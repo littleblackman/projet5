@@ -3,13 +3,16 @@
 namespace App\Controller;
 require "vendor/autoload.php";
 
+if(session_id() == '') {
+    session_start();
+}
 use App\Model\ProjectManager;
 use App\Model\JobManager;
 use App\Model\SkillManager;
 use App\Model\TrainingManager;
 use App\Model\AuthManager;
 
-session_start();
+
 
 class Backend
 {
@@ -17,12 +20,12 @@ class Backend
     public static function verifyMember($userPass, $userPseudo)
     {
         $authManager = new AuthManager();
-        $member = $authManager->getMember($userPseudo);
+        $user = $authManager->getMember($userPseudo);
         //comparaison du mdp saisie avec le mdp hash de la bdd
-        $isPasswordCorrect = password_verify($userPass, $member['pass']);
+        $isPasswordCorrect = password_verify($userPass, $user['pass']);
         //Si $member=false le membre n'est pas existant en bdd
         try{
-            if (!$member)
+            if (!$user)
             {
                 throw new \Exception('Mauvais utilisateur ou mot de passe!');
             }
@@ -30,11 +33,11 @@ class Backend
                 //Le membre existe 2 possibilité le mdp correspond
             {
                 if ($isPasswordCorrect) {
-                    $_SESSION['id'] = $member['id'];
-                    $_SESSION['pseudo'] = $member['pseudo'];
-                    $_SESSION['pass'] = $member['pass'];
-                    $_SESSION['email'] = $member['email'];
-                    $_SESSION['userLevel'] = $member['userLevel'];
+                    $_SESSION['id'] = $user['id'];
+                    $_SESSION['pseudo'] = $user['pseudo'];
+                    $_SESSION['pass'] = $user['pass'];
+                    $_SESSION['email'] = $user['email'];
+                    $_SESSION['level'] = $user['level'];
                     //on redirige vers la page d'accueil qui prendra en compte les variable de session
                     header('location:console.php');
                 }
