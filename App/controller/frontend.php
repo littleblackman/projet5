@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 require "vendor/autoload.php";
-
+use PHPMailer\PHPMailer\PHPMailer;
 use App\Model\ProjectManager;
 use App\Model\AuthManager;
 use App\Model\UserManager;
+use App\Model\JobManager;
+use App\Model\TrainingManager;
+use App\Model\SkillManager;
 use App\Model\Recaptcha;
 
 class Frontend
@@ -27,84 +30,43 @@ class Frontend
         require('App/view/frontend/projectView.php');
     }
 
-//VERIFICATION DE L'EXISTENCE D'UN MEMBRE EN BDD
-    public static function verifyMember($userPass, $userPseudo)
+    public static function path ()
     {
-        $authManager = new AuthManager();
-        $member = $authManager->getMember($userPseudo);
-        //comparaison du mdp saisie avec le mdp hash de la bdd
-        $isPasswordCorrect = password_verify($userPass, $member['pass']);
-        //Si $member=false le membre n'est pas existant en bdd
-        try {
-            if (!$member) {
-                throw new \Exception('Mauvais utilisateur ou mot de passe!');
-            } else //Le membre existe 2 possibilités le mdp correspond
-            {
-                if ($isPasswordCorrect) {
-                    $_SESSION['id'] = $member['id'];
-                    $_SESSION['pseudo'] = $member['pseudo'];
-                    $_SESSION['pass'] = $member['pass'];
-                    $_SESSION['email'] = $member['email'];
-                    $_SESSION['userLevel'] = $member['userLevel'];
-                    //on redirige vers la page d'accueil qui prendra en compte les variable de session
-                    header('location:index.php');
-                } //Le mdp ne correspond pas
-                else {
-                    throw new \Exception('Mauvais utilisateur ou mot de passe!');
-                }
-            }
-        } catch (\Exception $e) {
-            $authInfo = $e->getMessage();
-            ob_start();
-            ?>
-            <div id="wrongPass">
-                <p><?php echo 'Erreur : ' . $e->getMessage(); ?></p>
-                <?php include('include/login.php'); ?>
-                <p>Pas de compte ? <a href="index.php?action=creationUser">Créer un compte</a></p>
-            </div>
-            <?php
-            $content = ob_get_clean();
-            require('App/view/frontend/template.php');
-        }
-    }
-    public static function addMember($pseudo, $email, $pass, $pass2)
-    {
-        try
-        {
-            $userManager = new UserManager();
-            //Vérification de l'existance ou non du pseudo dans la bdd et verification sur les champs du formulaire
-            $checkMember = $userManager->checkPseudo($pseudo);
-            if(!$checkMember){
-                if(preg_match('#[a-zA-Z0-9_]#', $pseudo)){
-                    if($pass == $pass2){
-                        if(preg_match(" /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ", $email)){
-                            $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
-                            //envoi au modele pour insertion dans BDD
-                            $push = $userManager->pushMember($pseudo, $pass_hash, $email);
-                            throw new \Exception('Votre compte a été créé avec succès');
-                        }else{
-                            throw new \Exception('veuillez vérifier votre adresse email');
-                        }
-                    }else{
-                        throw new \Exception('Les mots de passe ne correspondent pas');
-                    }
-                }else{
-                    throw new \Exception('Un ou plusieurs caractères non autorisé dans le mot de passe');
-                }
-            }else{
-                throw new \Exception('Ce pseudo est déjà utilisé');
-            }
-        }
-        catch(\Exception $e){
-            $info = $e->getMessage();
-            require('App/view/frontend/newAccountView.php');
-        }
+        $jobManager = new JobManager();
+        $jobs = $jobManager->getJobs();
+        $trainingManager = new TrainingManager();
+        $trainings = $trainingManager->getTrainings();
+        $SkillManager = new SkillManager();
+        $skills = $SkillManager->getSkills();
+        require ('App/View/frontend/cvView.php');
     }
 
-    public static function logout()
-    {
-        session_destroy();
-        header('location:index.php');
+    public static function sendMail (){
+        $mail = new PHPMailer();
+        $mail->isSMTP(); //Paramétrer le Mailer pour utiliser SMTP
+        $mail->SMTPDebug = 1; // debugging:1 = erreurs et message, 2 = messages uniquement
+        $mail->SMTPAuth = true; //activer authentification SMTP
+        $mail->SMTPSecure = 'ssl'; // secure transfer enabled OBLIGATOIRE pour gmail
+        $mail->Host = 'smtp.gmail.com'; //Host SMTP pour gmail
+        $mail->Port = 465; // 25 ou 465 pour gmail
+        $mail->Username = "carolinemoulin84@gmail.com"; // l'adresse email d'envoi
+        $mail->Password = "Chris1609"; //le mot de passe de l'adresse gmail
+
+// Expéditeur
+        $mail->setFrom('carolinemoulin84@gmail.com'); //Personnaliser l'envoyer
+// Destinataire
+        $mail->AddAddress('carolinemoulin84@gmail.com'); //Ajouter le destinataire
+// Objet
+        $mail->Subject = 'Objet du message';
+
+// Votre message
+        $mail->isHTML(true); //Paramétrer le format des emails en HTML
+
+// Envoi du mail avec gestion des erreurs
+        if(!$mail->send())
+        {
+            exit($mail->ErrorInfo());
+        }
     }
 
 }

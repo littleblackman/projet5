@@ -32,7 +32,7 @@ class JobManager extends Manager
     public function getJobs()
     {
         $db = $this->dbConnect();
-        $job = $db->query('SELECT id, entreprise, logo, missions, dateStart, dateEnd FROM jobs');
+        $job = $db->query('SELECT id, entreprise, logo, missions, DATE_FORMAT(dateStart, \'%m/%Y\')AS dateStart_fr, DATE_FORMAT(dateEnd, \'%m/%Y\')AS dateEnd_fr FROM jobs');
         return $job;
     }
 

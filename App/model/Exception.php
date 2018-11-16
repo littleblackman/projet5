@@ -21,4 +21,3 @@ class Exception
     function __construct ($message = NULL, $code = 0);
     function __toString(); // Chaîne formatée pour l'affichage.
 }
-}

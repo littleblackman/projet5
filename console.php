@@ -11,11 +11,7 @@ $accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateu
 
 try {
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listProjects') {
-            $myFront::listProjects();
-        }
-        //Acces a la zone d'administration
-        elseif ($_GET['action'] == 'admin'){
+        if ($_GET['action'] == 'admin'){
             if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
             {$myBack::verifyMember($_POST['userPass'], $_POST['userPseudo']);
                 if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
