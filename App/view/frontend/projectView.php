@@ -28,4 +28,4 @@
 <?php
 $content = ob_get_clean();
 
-require('template.php'); ?>
+require('App/view/frontend/template.php'); ?>

@@ -1,7 +1,9 @@
 {
   "name": "Caroline Moulin/Portfolio",
   "description": "Projet 5 de la formation OpenClassroom",
-  "require": {},
+  "require": {
+    "phpmailer/phpmailer": "6.0.x-dev"
+  },
   "autoload": {
     "psr-4" : {
       "App\\" : "App"

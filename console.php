@@ -17,9 +17,11 @@ try {
         //Acces a la zone d'administration
         elseif ($_GET['action'] == 'admin'){
             if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
-            {
-                if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+            {var_dump('zut');
+                if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
+                    var_dump('zut');
                         $myBack::verifyMember($_POST['userPass'], $_POST['userPseudo']);
+
                         require ('App/View/backend/consolePanelView.php');
                     }else{
                         throw new Exception('Tous les champs ne sont pas remplis');

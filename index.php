@@ -21,47 +21,17 @@ try {
         }elseif ($_GET['action'] == 'path') {
             $myFront::path();
         }
-        //Login d'un membre existant
-        elseif ($_GET['action'] == 'login'){
-            if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
-            {
-                $myFront::verifyMember($_POST['userPass'], $_POST['userPseudo']);
-            }else{
-                throw new \Exception('Tous les champs ne sont pas remplis');
-            }
-        }
-        //redirection vers la View de creation de membre
-        elseif ($_GET['action'] == 'creationUser') {
-        require('App/view/frontend/newAccountView.php');
-        }
-        //Creation d'un nouveau membre
-        elseif ($_GET['action'] == 'addMember') {
-            if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])
+        //Envoi d'un mail de contact
+        elseif ($_GET['action'] == 'contact') {
+            if (isset($_POST['name']) && !empty($_POST['name'])
                 && isset($_POST['email']) && !empty($_POST['email'])
-                && isset($_POST['pass']) && !empty($_POST['pass'])
-                && isset($_POST['pass2']) && !empty($_POST['pass2']))
+                && isset($_POST['message']) && !empty($_POST['name']))
             {
-
-                $myFront::addMember($_POST['pseudo'], $_POST['email'], $_POST['pass'], $_POST['pass2']);
-//                \App\controller\frontend::addMember($_POST['pseudo'], $_POST['email'], $_POST['pass'], $_POST['pass2']  );
-            }else {
-                throw new \Exception('Tous les champs ne sont pas remplis');
-            }
-        }
-        //connexion d'un membre
-        elseif ($_GET['action'] == 'login'){
-            if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
-            {
-                $myFront::verifyMember($_POST['userPass'], $_POST['userPseudo']);
+                $myFront::sendMail();
             }else{
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
-        //logout membre
-        elseif ($_GET['action'] == 'logout'){
-            $myFront::logout();
-        }
-
         else {
     require('App/view/frontend/hostView.php');
 }

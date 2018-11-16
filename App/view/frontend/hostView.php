@@ -13,4 +13,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('App/view/frontend/template.php'); ?>
+<?php require('template.php'); ?>
