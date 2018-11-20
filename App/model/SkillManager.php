@@ -5,35 +5,35 @@ require "vendor/autoload.php";
 
 class SkillManager extends Manager
 {
-    public function addSkill($skill, $level)
+    public function addSkill($skill, $logo)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO skills(skill, level) VALUES(?,?)');
-        $affectedLines = $req->execute(array($skill, $level));
+        $req = $db->prepare('INSERT INTO skills(skill, logo) VALUES(?,?)');
+        $affectedLines = $req->execute(array($skill, $logo));
         return $affectedLines;
     }
 
     public function getSkill($skillId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, skill, level FROM skills WHERE id = ?');
+        $req = $db->prepare('SELECT id, skill, logo FROM skills WHERE id = ?');
         $req->execute(array($skillId));
         $skill = $req->fetch();
         return $skill;
     }
 
-    public function skillEdit ($id, $skill, $level)
+    public function skillEdit ($id, $skill, $logo)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE skills SET skill = ?, level = ?  WHERE id = ?');
-        $skill = $req->execute(array($id, $skill, $level));
+        $req = $db->prepare('UPDATE skills SET logo = ?, level = ?  WHERE id = ?');
+        $skill = $req->execute(array($id, $skill, $logo));
         return $skill;
     }
 
     public function getSkills()
     {
         $db = $this->dbConnect();
-        $skill = $db->query('SELECT id, skill, level FROM skills');
+        $skill = $db->query('SELECT id, skill, logo FROM skills');
         return $skill;
     }
 

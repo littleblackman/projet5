@@ -4,7 +4,7 @@
 <div class="card">
     <h1 class="card-header">Ajout d'un nouveau projet</h1>
 
-    <form action="console.php?action=newProject" method="post">
+    <form action="console.php?action=newProject" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>Titre du projet</label>
             <input type="text" class="form-control" id="titleProject" name="titleProject" placeholder="Titre du projet"  required>
@@ -36,6 +36,8 @@
         </div>
     </form>
 </div>
+
+
 <?php
 $content = ob_get_clean();
 

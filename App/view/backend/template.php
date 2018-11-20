@@ -26,13 +26,32 @@
 
 <div id="content" class="container-fluid">
     <div class="row">
+        <div class="card my-4" id="quickNav">
+            <div class="card-body">
+                <h5 class="card-header">Accès rapide</h5>
+                <div class="input-group">
+                    <ul>
+                        <li><a href="console.php?action=addProject">Ajout d'un projet</a></li>
+                        <li><a href="console.php?action=manageProjects">Edition d'un projet</a></li>
+                        <li><a href="console.php?action=addJob">Ajout d'une expérience</a></li>
+                        <li><a href="console.php?action=manageJobs">Edition d'une expérience</a></li>
+                        <li><a href="console.php?action=addTraining">Ajout d'une formation</a></li>
+                        <li><a href="console.php?action=manageTrainings">Edition d'une formation</a></li>
+                        <li><a href="console.php?action=addSkill">Ajout d'une compétence</a></li>
+                        <li><a href="console.php?action=manageSkills">Edition d'une compétence</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!-- Content -->
-        <div class="col-md-12">
+        <div class="col-md-9">
             <h1 class="my-4"><strong>
                 </strong></h1>
             <!-- <h5>Vous êtes ici : <?php echo $title; ?> </h5>-->
             <?= $content ?>
-            <p><a href="<?php echo $_SERVER["HTTP_REFERER"] ?>">Retour à la page Précédente</a></p>
+
+            <p> <a href="<?php echo $_SERVER["HTTP_REFERER"] ?>">Retour à la page Précédente</a></p>
+
 
         </div>
     </div>

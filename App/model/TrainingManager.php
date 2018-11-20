@@ -33,7 +33,7 @@ class TrainingManager extends Manager
     public function getTrainings()
     {
         $db = $this->dbConnect();
-        $training = $db->query('SELECT id, graduate, date, institution FROM training');
+        $training = $db->query('SELECT id, graduate, date, institution FROM training ORDER BY date DESC');
         return $training;
     }
 

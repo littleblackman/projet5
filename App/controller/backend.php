@@ -112,10 +112,10 @@ class Backend
         }
     }
     //Expériences
-    public static function newJob($entreprise, $logo, $missions, $dateStart, $dateEnd)
+    public static function newJob($entreprise, $logo, $position, $missions, $dateStart, $dateEnd)
     {
         $jobManager = new JobManager();
-        $affectedLines = $jobManager->addJob($entreprise, $logo, $missions, $dateStart, $dateEnd);
+        $affectedLines = $jobManager->addJob($entreprise, $logo, $position, $missions, $dateStart, $dateEnd);
         if ($affectedLines === false) {
             throw new \Exception('Impossible d\'ajouter une expérience');
         }
@@ -131,10 +131,10 @@ class Backend
         require ('App/view/backend/editJobView.php');
     }
 
-    public static function editJob ($id, $entreprise, $logo, $missions, $dateStart, $dateEnd)
+    public static function editJob ($id, $entreprise, $logo, $position, $missions, $dateStart, $dateEnd)
     {
         $jobManager = new JobManager();
-        $affectedLines = $jobManager->jobEdit($id, $entreprise, $logo, $missions, $dateStart, $dateEnd);
+        $affectedLines = $jobManager->jobEdit($id, $entreprise, $logo, $position, $missions, $dateStart, $dateEnd);
         if ($affectedLines === false) {
             throw new \Exception('Impossible de modifier l\'expérience');
         }
@@ -212,10 +212,10 @@ class Backend
         }
     }
     //Compétences
-    public static function newSkill($skill, $level)
+    public static function newSkill($skill, $logo)
     {
         $skillManager = new SkillManager();
-        $affectedLines = $skillManager->addSkill($skill, $level);
+        $affectedLines = $skillManager->addSkill($skill, $logo);
         if ($affectedLines === false) {
             throw new \Exception('Impossible d\'ajouter une compétence');
         }
@@ -231,10 +231,10 @@ class Backend
         require ('App/view/backend/editSkillView.php');
     }
 
-    public static function editSkill ($id, $skill, $level)
+    public static function editSkill ($id, $skill, $logo)
     {
         $SkillManager = new SkillManager();
-        $affectedLines = $SkillManager->skillEdit($id, $skill, $level);
+        $affectedLines = $SkillManager->skillEdit($id, $skill, $logo);
         if ($affectedLines === false) {
             throw new \Exception('Impossible de modifier la compétence');
         }
@@ -265,7 +265,7 @@ class Backend
     public static function logout()
     {
         session_destroy ();
-        header('location:index.php');
+        header('location:console.php');
     }
 }
 

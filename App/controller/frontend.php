@@ -3,9 +3,8 @@
 namespace App\Controller;
 require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 use App\Model\ProjectManager;
-use App\Model\AuthManager;
-use App\Model\UserManager;
 use App\Model\JobManager;
 use App\Model\TrainingManager;
 use App\Model\SkillManager;
@@ -41,32 +40,34 @@ class Frontend
         require ('App/View/frontend/cvView.php');
     }
 
-    public static function sendMail (){
-        $mail = new PHPMailer();
-        $mail->isSMTP(); //Paramétrer le Mailer pour utiliser SMTP
-        $mail->SMTPDebug = 1; // debugging:1 = erreurs et message, 2 = messages uniquement
-        $mail->SMTPAuth = true; //activer authentification SMTP
-        $mail->SMTPSecure = 'ssl'; // secure transfer enabled OBLIGATOIRE pour gmail
-        $mail->Host = 'smtp.gmail.com'; //Host SMTP pour gmail
-        $mail->Port = 465; // 25 ou 465 pour gmail
-        $mail->Username = "carolinemoulin84@gmail.com"; // l'adresse email d'envoi
-        $mail->Password = "Chris1609"; //le mot de passe de l'adresse gmail
+    public static function sendMail ()
+    {
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            $mail->SMTPDebug = 1; // debugging:1 = erreurs et message, 2 = messages uniquement
+            $mail->isSMTP(); //Paramétrer le Mailer pour utiliser SMTP
+            $mail->Host = 'smtp.gmail.com'; //Host SMTP pour gmail
+            $mail->SMTPAuth = true; //activer authentification SMTP
+            $mail->Username = "carolinemoulin84@gmail.com"; // l'adresse email d'envoi
+            $mail->Password = "Chris1609"; //le mot de passe de l'adresse gmail
+            $mail->SMTPSecure = 'ssl'; // secure transfer enabled OBLIGATOIRE pour gmail
+            $mail->Port = 465; // 25 ou 465 pour gmail
 
-// Expéditeur
-        $mail->setFrom('carolinemoulin84@gmail.com'); //Personnaliser l'envoyer
-// Destinataire
-        $mail->AddAddress('carolinemoulin84@gmail.com'); //Ajouter le destinataire
-// Objet
-        $mail->Subject = 'Objet du message';
+            //Recipients
+            $mail->setFrom('carolinemoulin84@gmail.com'); //Personnaliser l\'envoyer
+            $mail->addAddress('carolinemoulin84@gmail.com');     //Ajouter le destinataire
 
-// Votre message
-        $mail->isHTML(true); //Paramétrer le format des emails en HTML
+            //Content
+            $mail->isHTML(true);   //Paramétrer le format des emails en HTML
+            $mail->Subject = 'Objet du message';
+            $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-// Envoi du mail avec gestion des erreurs
-        if(!$mail->send())
-        {
-            exit($mail->ErrorInfo());
+            $mail->send();
+            echo 'Message envoyé';
+        } catch (Exception $e) {
+            echo 'Le message ne peut pas être envoyé. Erreur du message: ', $mail->ErrorInfo;
         }
     }
-
 }

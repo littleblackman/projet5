@@ -5,19 +5,19 @@
                     <div class="input-group">
                         <div class="contact">
                             <form action="index.php?action=contact" method="post">
-                                <div>
-                                    <label for="name">Nom :</label>
-                                    <input type="text" name="name" id="name"/>
+                                <div class="form-group">
+                                    <label>Nom :</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom"  required>
                                     <div id="error-message"></div>
                                 </div>
-                                <div>
-                                    <label for="email">Email :</label>
-                                    <input type="text" name="email" id="email"/>
+                                <div class="form-group">
+                                    <label>Email :</label>
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Votre email"  required>
                                     <div id="error-message"></div>
                                 </div>
-                                <div>
-                                    <label for="message">Votre message :</label>
-                                    <textarea name="message" id="message"></textarea>
+                                <div class="form-group">
+                                    <label>Votre message : </label>
+                                    <textarea type="text" class="form-control" id="message" name="message" placeholder="Votre message" rows="10" required></textarea>
                                     <div id="error-message"></div>
                                 </div>
 

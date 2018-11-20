@@ -1,4 +1,4 @@
-<form name="loginform" id="loginform" action="index.php?action=login" method="post">
+<form name="loginform" id="loginform" action="console.php?action=login" method="post">
     <p>
         <label for="user_login">
             Identifiant <br>

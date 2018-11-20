@@ -10,8 +10,8 @@
             <input type="text" class="form-control" id="skill" name="skill" placeholder="Nom de la compétence"  required>
         </div>
         <div class="form-group">
-            <label>Niveau de la compétence</label><br>
-            <input type="number" class="form-control" id="level" name="level" placeholder="Niveau de la compétence"  required>
+            <label>Logo de la compétence</label><br>
+            <input type="text" class="form-control" id="logo" name="logo" placeholder="Emplacement du logo"  required>
         </div>
         <div>
             <button type="submit" class="btn btn-primary">Ajouter la compétence</button>

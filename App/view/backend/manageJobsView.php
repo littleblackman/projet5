@@ -6,6 +6,7 @@
             <tr>
                 <th scope="col">Entreprise</th>
                 <th scope="col">Logo</th>
+                <th scope="col">Poste occupé</th>
                 <th scope="col">Missions</th>
                 <th scope="col">Date début</th>
                 <th scope="col">Date fin</th>
@@ -16,11 +17,12 @@
                 ?>
                 <td><?php echo htmlspecialchars($data['entreprise']); ?></td>
                 <td><img src="<?php echo htmlspecialchars($data['logo']); ?>"></td>
+                <td><?php echo htmlspecialchars($data['position']); ?></td>
                 <td><?php echo htmlspecialchars($data['missions']); ?></td>
-                <td><?php echo htmlspecialchars($data['dateStart']); ?></td>
-                <td><?php echo htmlspecialchars($data['dateEnd']); ?></td>
-                <td><a href="index.php?action=editProjectView&amp;id=<?php echo $data['id']; ?>"><button type="button" class="btn btn-info">Editer</button></a></td>
-                <td><a href="index.php?action=deleteProject&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer cette expérience ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
+                <td><?php echo htmlspecialchars($data['dateStart_fr']); ?></td>
+                <td><?php echo htmlspecialchars($data['dateEnd_fr']); ?></td>
+                <td><a href="console.php?action=editJobView&amp;id=<?php echo $data['id']; ?>"><button type="button" class="btn btn-info">Editer</button></a></td>
+                <td><a href="console.php?action=deleteJob&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer cette expérience ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
             </tr>
 
             <?php

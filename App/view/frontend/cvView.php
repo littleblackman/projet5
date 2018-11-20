@@ -3,13 +3,19 @@
 <?php ob_start(); ?>
     <div class="card my-4">
         <div class="card-body">
-            <h5 class="card-header">Mes expériences</h5>
+            <h3 class="card-header">Mes expériences</h3>
             <div class="input-group">
                 <?php
                 while ($data = $jobs->fetch()) {
                     ?>
-                    <p> <?php echo htmlspecialchars($data['entreprise']); ?>
-                        <img src="<?php echo htmlspecialchars($data['logo']); ?>" alt="logo"></p>
+                    <p><h4> <?php echo htmlspecialchars($data['entreprise']); ?></h4>
+                        <?php if (!empty($data['logo'])){ ?>
+                    <img src="<?php echo htmlspecialchars($data['logo']); ?>" alt="logo"></p>
+                    <?php
+                }else {
+                    echo '';
+                }
+                ?>
                     <p><?php echo htmlspecialchars($data['missions']); ?></p>
                     <p>De <?php echo htmlspecialchars($data['dateStart_fr']); ?>
                        à <?php echo htmlspecialchars($data['dateEnd_fr']); ?></p>
@@ -22,7 +28,7 @@
     </div>
     <div class="card my-4">
         <div class="card-body">
-            <h5 class="card-header">Mes formations</h5>
+            <h3 class="card-header">Mes formations</h3>
             <div class="input-group">
                 <?php
                 while ($data = $trainings->fetch()) {
@@ -39,17 +45,20 @@
     </div>
     <div class="card my-4">
         <div class="card-body">
-            <h5 class="card-header">Mes compétences</h5>
+            <h3 class="card-header">Mes compétences</h3>
             <div class="input-group">
-                <?php
-                while ($data = $skills->fetch()) {
-                    ?>
-                    <p><?php echo htmlspecialchars($data['skill']); ?>
-                    <?php echo htmlspecialchars($data['level']); ?></p>
+                <div class="skills">
                     <?php
-                }
-                $skills->closeCursor();
-                ?>
+                    while ($data = $skills->fetch()) {
+                        ?>
+                        <p><img src="<?php echo htmlspecialchars($data['logo']); ?>"><br>
+                            <?php echo htmlspecialchars($data['skill']); ?>
+                            </p>
+                        <?php
+                    }
+                    $skills->closeCursor();
+                    ?>
+                </div>
             </div>
         </div>
     </div>

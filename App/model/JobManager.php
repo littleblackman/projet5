@@ -4,35 +4,35 @@ namespace App\Model;
 
 class JobManager extends Manager
 {
-    public function addJob($entreprise, $logo, $missions, $dateStart, $dateEnd)
+    public function addJob($entreprise, $logo, $position, $missions, $dateStart, $dateEnd)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO jobs(entreprise, logo, missions, dateStart, dateEnd) VALUES(?,?,?,?,?)');
-        $affectedLines = $req->execute(array($entreprise, $logo, $missions, $dateStart, $dateEnd));
+        $req = $db->prepare('INSERT INTO jobs(entreprise, logo, position, missions, dateStart, dateEnd) VALUES(?,?,?,?,?,?)');
+        $affectedLines = $req->execute(array($entreprise, $logo, $position, $missions, $dateStart, $dateEnd));
         return $affectedLines;
     }
 
     public function getJob($JobId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, entreprise, logo, missions, dateStart, dateEnd FROM jobs WHERE id = ?');
+        $req = $db->prepare('SELECT id, entreprise, logo, position, missions, dateStart, dateEnd FROM jobs WHERE id = ?');
         $req->execute(array($JobId));
         $job = $req->fetch();
         return $job;
     }
 
-    public function jobEdit ($id, $entreprise, $logo, $missions, $dateStart, $dateEnd)
+    public function jobEdit ($id, $entreprise, $position, $logo, $missions, $dateStart, $dateEnd)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE jobs SET entreprise = ?, logo = ?, missions = ?, dateStart = ?, dateEnd = ? WHERE id = ?');
-        $job = $req->execute(array($id, $entreprise, $logo, $missions, $dateStart, $dateEnd));
+        $req = $db->prepare('UPDATE jobs SET entreprise = ?, logo = ?, position = ?, missions = ?, dateStart = ?, dateEnd = ? WHERE id = ?');
+        $job = $req->execute(array($id, $entreprise, $logo, $position, $missions, $dateStart, $dateEnd));
         return $job;
     }
 
     public function getJobs()
     {
         $db = $this->dbConnect();
-        $job = $db->query('SELECT id, entreprise, logo, missions, DATE_FORMAT(dateStart, \'%m/%Y\')AS dateStart_fr, DATE_FORMAT(dateEnd, \'%m/%Y\')AS dateEnd_fr FROM jobs');
+        $job = $db->query('SELECT id, entreprise, logo, position, missions, DATE_FORMAT(dateStart, \'%m/%Y\')AS dateStart_fr, DATE_FORMAT(dateEnd, \'%m/%Y\')AS dateEnd_fr FROM jobs ORDER BY dateEnd DESC');
         return $job;
     }
 

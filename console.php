@@ -17,10 +17,10 @@ try {
                 if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                         require ('App/View/backend/consolePanelView.php');
                     }else{
-                        throw new Exception('Tous les champs ne sont pas remplis');
+                        throw new \Exception('Tous les champs ne sont pas remplis');
                     }
                     }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
 //Gestion des projets
@@ -29,7 +29,7 @@ try {
             if (isset($_SESSION['level']) && $_SESSION['level'] == 'admin') {
                 require('App/view/backend/newProjectView.php');
             } else {
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Ajout d'une compétence depuis la zone admin
@@ -47,7 +47,7 @@ try {
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 $myBack::listProjectsBack();
         }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Vers la page d'edition de formations
@@ -59,7 +59,7 @@ try {
                     throw new \Exception('Aucun projet à éditer !');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //validation de l'edition des formations
@@ -71,7 +71,7 @@ try {
                     throw new \Exception('Aucun id de projet');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Suppression d'une formation
@@ -83,36 +83,36 @@ try {
                     throw new \Exception('Aucun id de projet');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
 //Gestion des expériences
-        //vers la page d'ajout de compétence
+        //vers la page d'ajout d'expérience
         elseif($_GET['action'] == 'addJob'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 require('App/view/backend/newJobView.php');
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
-        //Ajout d'une compétence depuis la zone admin
+        //Ajout d'une expérience depuis la zone admin
         elseif($_GET['action'] == 'newJob'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
-                if (!empty($_POST['entreprise'])&& !empty($_POST['logo'])&& !empty($_POST['missions'])&& !empty($_POST['dateStart'])&& !empty($_POST['dateEnd'])) {
-                    $myBack::newJob($_POST['entreprise'], $_POST['logo'], $_POST['missions'], $_POST['dateStart'], $_POST['dateEnd']);
+                if (!empty($_POST['entreprise'])&& !empty($_POST['missions'])&& !empty($_POST['dateStart'])) {
+                    $myBack::newJob($_POST['entreprise'], $_POST['logo'], $_POST['position'], $_POST['missions'], $_POST['dateStart'], $_POST['dateEnd']);
                 }else {
                     throw new \Exception('Tous les champs ne sont pas remplis');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
-        //vers la page de gestion des compétences
+        //vers la page de gestion des expériences
         elseif($_GET['action'] == 'manageJobs'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 $myBack::listJobsBack();
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Vers la page d'edition d'expérience
@@ -124,19 +124,19 @@ try {
                     throw new \Exception('Aucune expérience à éditer !');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
-        //validation de l'edition des Expérences
+        //validation de l'edition des Expériences
         elseif($_GET['action'] == 'editJob'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 if (isset($_GET['id']) && ($_GET['id'] > 0)){
-                    $myBack::editJob($_GET['id'], $_POST['entreprise'], $_POST['logo'], $_POST['missions'], $_POST['dateStart'], $_POST['dateEnd']);
+                    $myBack::editJob($_GET['id'], $_POST['entreprise'], $_POST['position'], $_POST['logo'], $_POST['missions'], $_POST['dateStart'], $_POST['dateEnd']);
                 }else{
                     throw new \Exception('Aucun id d\'expérience');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Suppression d'une compétences
@@ -148,7 +148,7 @@ try {
                     throw new \Exception('Aucun id d\'expérience');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
 
@@ -158,7 +158,7 @@ try {
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 require('App/view/backend/newTrainingView.php');
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Ajout d'une compétence depuis la zone admin
@@ -170,7 +170,7 @@ try {
                     throw new \Exception('Tous les champs ne sont pas remplis');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //vers la page de gestion des formations
@@ -178,7 +178,7 @@ try {
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 $myBack::listTrainingsBack();
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Vers la page d'edition de formations
@@ -190,7 +190,7 @@ try {
                     throw new \Exception('Aucune formation à éditer !');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //validation de l'edition des formations
@@ -202,7 +202,7 @@ try {
                 throw new \Exception('Aucun id de formation');
             }
         }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Suppression d'une formation
@@ -214,7 +214,7 @@ try {
                 throw new \Exception('Aucun id de formation');
             }
         }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
 
@@ -224,19 +224,19 @@ try {
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 require('App/view/backend/newSkillView.php');
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Ajout d'une compétence depuis la zone admin
         elseif($_GET['action'] == 'newSkill'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
-                if (!empty($_POST['skill'])&& !empty($_POST['level'])) {
-                    $myBack::newSkill($_POST['skill'], $_POST['level']);
+                if (!empty($_POST['skill'])&& !empty($_POST['logo'])) {
+                    $myBack::newSkill($_POST['skill'], $_POST['logo']);
                 }else {
                     throw new \Exception('Tous les champs ne sont pas remplis');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //vers la page de gestion des compétences
@@ -244,7 +244,7 @@ try {
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 $myBack::listSkillsBack();
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Vers la page d'edition de compétences
@@ -256,19 +256,19 @@ try {
                     throw new \Exception('Aucune Compétence à éditer !');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //validation de l'edition des compétences
         elseif($_GET['action'] == 'editSkill'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
                 if (isset($_GET['id']) && ($_GET['id'] > 0)){
-                    $myBack::editSkill($_GET['id'], $_POST['skill'], $_POST['level']);
+                    $myBack::editSkill($_GET['id'], $_POST['skill'], $_POST['logo']);
                 }else{
                     throw new \Exception('Aucun id de compétence');
                 }
             }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
         //Suppression d'une compétences
@@ -280,7 +280,7 @@ try {
                 throw new \Exception('Aucun id de projet');
             }
         }else{
-                throw new Exception($accesdenied);
+                throw new \Exception($accesdenied);
             }
         }
     }
