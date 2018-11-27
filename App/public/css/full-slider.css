@@ -53,6 +53,23 @@ a {
     justify-content : space-between;
 }
 
+.contact label{
+    display: block;
+    width: 20%;
+    float: left;
+    padding-right: 1%;
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+.contact input, .contact textarea{
+    margin-left: 1%;
+    width: 58%;
+}
+
+.contact g-recaptcha{
+    width: 20%;
+}
 /**
 Map
 **/
@@ -70,14 +87,32 @@ Map
 }
 
 .owl-carousel{
-    width: 70%;
-    margin-left: 15%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .owl-stage{
     background-color: #8f82ab;
+
 }
 
 .owl-item img{
-    width: 70%;
+    width: 80%;
+
+}
+
+.owl-nav{
+    display: none;
+}
+.item-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.item_title {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #232323;
 }

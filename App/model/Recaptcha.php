@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace www\App\Model;
 
 /**
  * Class Recaptcha

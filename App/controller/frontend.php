@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-require "vendor/autoload.php";
+require "../vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use App\Model\ProjectManager;
@@ -49,14 +49,14 @@ class Frontend
             $mail->isSMTP(); //Paramétrer le Mailer pour utiliser SMTP
             $mail->Host = 'smtp.gmail.com'; //Host SMTP pour gmail
             $mail->SMTPAuth = true; //activer authentification SMTP
-            $mail->Username = "carolinemoulin84@gmail.com"; // l'adresse email d'envoi
-            $mail->Password = "Chris1609"; //le mot de passe de l'adresse gmail
+            $mail->Username = "contact@caroline-moulin.fr"; // l'adresse email d'envoi
+            $mail->Password = ""; //le mot de passe de l'adresse gmail
             $mail->SMTPSecure = 'ssl'; // secure transfer enabled OBLIGATOIRE pour gmail
             $mail->Port = 465; // 25 ou 465 pour gmail
 
             //Recipients
-            $mail->setFrom('carolinemoulin84@gmail.com'); //Personnaliser l\'envoyer
-            $mail->addAddress('carolinemoulin84@gmail.com');     //Ajouter le destinataire
+            $mail->setFrom('contact@caroline-moulin.fr'); //Personnaliser l\'envoyer
+            $mail->addAddress('contact@caroline-moulin.fr');     //Ajouter le destinataire
 
             //Content
             $mail->isHTML(true);   //Paramétrer le format des emails en HTML

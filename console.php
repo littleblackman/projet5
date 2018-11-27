@@ -1,6 +1,7 @@
 <?php
+ini_set('display_errors',1);
 
-require "vendor/autoload.php";
+require "../vendor/autoload.php";
 
 use App\Controller\Backend;
 use App\Controller\Frontend;
@@ -27,7 +28,7 @@ try {
         //vers la page d'ajout de projet
         elseif($_GET['action'] == 'addProject') {
             if (isset($_SESSION['level']) && $_SESSION['level'] == 'admin') {
-                require('App/view/backend/newProjectView.php');
+                require('App/View/backend/newProjectView.php');
             } else {
                 throw new \Exception($accesdenied);
             }
@@ -90,7 +91,7 @@ try {
         //vers la page d'ajout d'expérience
         elseif($_GET['action'] == 'addJob'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
-                require('App/view/backend/newJobView.php');
+                require('App/View/backend/newJobView.php');
             }else{
                 throw new \Exception($accesdenied);
             }
@@ -156,7 +157,7 @@ try {
         //vers la page d'ajout de formation
         elseif($_GET['action'] == 'addTraining'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
-                require('App/view/backend/newTrainingView.php');
+                require('App/View/backend/newTrainingView.php');
             }else{
                 throw new \Exception($accesdenied);
             }
@@ -222,7 +223,7 @@ try {
         //vers la page d'ajout de compétence
         elseif($_GET['action'] == 'addSkill'){
             if(isset($_SESSION['level']) && $_SESSION['level'] == 'admin'){
-                require('App/view/backend/newSkillView.php');
+                require('App/View/backend/newSkillView.php');
             }else{
                 throw new \Exception($accesdenied);
             }
@@ -285,7 +286,7 @@ try {
         }
     }
     else {
-        require('App/view/backend/consolePanelView.php');
+        require('App/View/backend/consolePanelView.php');
     }
 
 }
@@ -299,5 +300,5 @@ catch(\Exception $e) {
 
     <?php
     $content = ob_get_clean();
-    require('App/view/backend/template.php');
+    require('App/View/backend/template.php');
 }

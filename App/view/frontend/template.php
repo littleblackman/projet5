@@ -20,16 +20,12 @@
     <title><?= $title ?></title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-
-    <!--script type="text/javascript" src="App/Public/js/jquery.diaporama.js"></script>
-    <script type="text/javascript" src="App/Public/js/script.js"></script-->
     <script src="https://use.fontawesome.com/854d45b8f4.js"></script>
     <link rel="stylesheet" href="App/Vendor/owlcarousel/owl.carousel.min.css">
 
-    <link href="App/public/css/full-slider.css" rel="stylesheet" />
+    <link href="App/Public/css/full-slider.css" rel="stylesheet" />
     <link rel="stylesheet" href="App/Vendor/owlcarousel/owl.theme.default.min.css">
-
- <!--   <script src='https://www.google.com/recaptcha/api.js'></script>-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 
@@ -41,7 +37,7 @@
 
 </div>
 
-<?php include("App/include/footer.php"); ?>
+<?php include("App/Include/footer.php"); ?>
 <script type="text/javascript" src="App/Vendor/jquery/jquery-3.3.1.js"></script>
 <script src="App/Vendor/owlcarousel/owl.carousel.js"></script>
 <script src="App/Public/js/app.js"></script>

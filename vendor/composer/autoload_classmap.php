@@ -6,17 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Controller\\Backend' => $baseDir . '/App/Controller/Backend.php',
-    'App\\Controller\\Frontend' => $baseDir . '/App/Controller/Frontend.php',
-    'App\\Model\\AuthManager' => $baseDir . '/App/Model/AuthManager.php',
-    'App\\Model\\Exception' => $baseDir . '/App/Model/Exception.php',
-    'App\\Model\\JobManager' => $baseDir . '/App/Model/JobManager.php',
-    'App\\Model\\Manager' => $baseDir . '/App/Model/Manager.php',
-    'App\\Model\\ProjectManager' => $baseDir . '/App/Model/ProjectManager.php',
-    'App\\Model\\Recaptcha' => $baseDir . '/App/Model/Recaptcha.php',
-    'App\\Model\\SkillManager' => $baseDir . '/App/Model/SkillManager.php',
-    'App\\Model\\TrainingManager' => $baseDir . '/App/Model/TrainingManager.php',
-    'App\\Model\\UserManager' => $baseDir . '/App/Model/UserManager.php',
     'PHPMailer\\PHPMailer\\Exception' => $vendorDir . '/phpmailer/phpmailer/src/Exception.php',
     'PHPMailer\\PHPMailer\\OAuth' => $vendorDir . '/phpmailer/phpmailer/src/OAuth.php',
     'PHPMailer\\PHPMailer\\PHPMailer' => $vendorDir . '/phpmailer/phpmailer/src/PHPMailer.php',

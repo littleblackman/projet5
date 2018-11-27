@@ -1,6 +1,7 @@
 <?php
+ini_set('display_errors',1);
 
-require "vendor/autoload.php";
+require "../vendor/autoload.php";
 
 use App\Controller\Frontend;
 
@@ -33,11 +34,10 @@ try {
             }
         }
         else {
-    require('App/view/frontend/hostView.php');
+    require('App/View/frontend/hostView.php');
 }
     }else {
         $myFront::listProjects();
-     // require('App/view/frontend/hostView.php');
     }
 }
 
@@ -52,5 +52,5 @@ catch(\Exception $e) {
 
         <?php
         $content = ob_get_clean();
-        require('App/view/frontend/template.php');
+        require('App/View/frontend/template.php');
     }

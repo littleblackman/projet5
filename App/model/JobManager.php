@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Model;
+namespace www\App\Model;
+require "../vendor/autoload.php";
 
 class JobManager extends Manager
 {

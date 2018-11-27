@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-require "vendor/autoload.php";
+require "../vendor/autoload.php";
 
 if(session_id() == '') {
     session_start();
