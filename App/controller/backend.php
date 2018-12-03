@@ -53,11 +53,11 @@ class Backend
             ?>
             <div id="wrongPass">
                 <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
-                <?php include('include/login.php');?>
+                <?php include('Include/login.php');?>
             </div>
             <?php
             $content = ob_get_clean();
-            require('App/view/backend/template.php');
+            require('App/View/backend/template.php');
         }
     }
 
@@ -78,7 +78,7 @@ class Backend
     {
         $projectManager = new ProjectManager();
         $project = $projectManager->getProject($projectId);
-        require ('App/view/backend/editProjectView.php');
+        require ('App/View/backend/editProjectView.php');
     }
 
     public static function editProject ($id, $titleProject, $description, $techno, $image, $link)
@@ -97,7 +97,7 @@ class Backend
     {
         $projectManager = new ProjectManager();
         $projects = $projectManager->getProjects();
-        require ('App/view/backend/manageProjectsView.php');
+        require ('App/View/backend/manageProjectsView.php');
     }
 
     public static function deleteProject($projectId)
@@ -128,7 +128,7 @@ class Backend
     {
         $jobManager = new JobManager();
         $job = $jobManager->getJob($jobId);
-        require ('App/view/backend/editJobView.php');
+        require ('App/View/backend/editJobView.php');
     }
 
     public static function editJob ($id, $entreprise, $logo, $position, $missions, $dateStart, $dateEnd)
@@ -147,7 +147,7 @@ class Backend
     {
         $jobManager = new JobManager();
         $jobs = $jobManager->getJobs();
-        require ('App/view/backend/manageJobsView.php');
+        require ('App/View/backend/manageJobsView.php');
     }
 
     public static function deleteJob($jobId)
@@ -178,7 +178,7 @@ class Backend
     {
         $trainingManager = new TrainingManager();
         $training = $trainingManager->getTraining($trainingId);
-        require ('App/view/backend/editTrainingView.php');
+        require ('App/View/backend/editTrainingView.php');
     }
 
     public static function editTraining ($id, $graduate, $date, $institution)
@@ -197,7 +197,7 @@ class Backend
     {
         $trainingManager = new TrainingManager();
         $trainings = $trainingManager->getTrainings();
-        require ('App/view/backend/manageTrainingsView.php');
+        require ('App/View/backend/manageTrainingsView.php');
     }
 
     public static function deleteTraining($trainingId)
@@ -228,7 +228,7 @@ class Backend
     {
         $skillManager = new SkillManager();
         $skill = $skillManager->getSkill($skillId);
-        require ('App/view/backend/editSkillView.php');
+        require ('App/View/backend/editSkillView.php');
     }
 
     public static function editSkill ($id, $skill, $logo)
@@ -247,7 +247,7 @@ class Backend
     {
         $SkillManager = new SkillManager();
         $skills = $SkillManager->getSkills();
-        require ('App/view/backend/manageSkillsView.php');
+        require ('App/View/backend/manageSkillsView.php');
     }
 
     public static function deleteSkill($skill_id)
@@ -265,7 +265,7 @@ class Backend
     public static function logout()
     {
         session_destroy ();
-        header('location:console.php');
+        header('location:index.php');
     }
 }
 

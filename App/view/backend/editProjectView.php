@@ -26,7 +26,7 @@
                     <label>Lien</label>
                     <input type="text" class="form-control" id="link" name="link" value="<?php echo $project['link']; ?>">
                 </div>
-                <button id="postButton" type="submit" class="btn btn-primary">Publier</button>
+                <button id="projectButton" type="submit" class="btn btn-primary">Publier</button>
 
             </form>
     </div>
@@ -35,4 +35,4 @@
 <?php $content = ob_get_clean(); ?>
 
 
-<?php require('App/view/backend/template.php'); ?>
+<?php require('App/View/backend/template.php'); ?>

@@ -33,4 +33,4 @@
 <?php
 $content = ob_get_clean();
 
-require('App/view/frontend/template.php'); ?>
+require('App/View/frontend/template.php'); ?>

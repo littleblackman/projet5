@@ -3,13 +3,13 @@
 <?php ob_start(); ?>
 
     <!--diaporama-->
-<?php include("App/include/diaporama.php"); ?>
+<?php include("App/Include/diaporama.php"); ?>
     <!--Expérience/CV-->
-<?php include("App/include/cv.php"); ?>
+<?php include("App/Include/cv.php"); ?>
     <!--Map-->
-<?php include("App/include/map.php"); ?>
+<?php include("App/Include/map.php"); ?>
     <!--Contact-->
-<?php include("App/include/contact.php"); ?>
+<?php include("App/Include/contact.php"); ?>
 
 <?php $content = ob_get_clean(); ?>
 

@@ -13,16 +13,15 @@
                                 <div class="form-group">
                                     <label>Email :</label>
                                     <input type="text" class="form-control" id="email" name="email" placeholder="Votre email"  required>
-                                    <div id="error-message"></div>
+                                    <div class="error-message"></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Votre message : </label>
-                                    <textarea type="text" class="form-control" id="message" name="message" placeholder="Votre message" rows="10" required></textarea>
-                                    <div id="error-message"></div>
+                                    <textarea class="form-control" id="message" name="message" placeholder="Votre message" rows="10" required></textarea>
+                                    <div class="error-message"></div>
                                 </div>
 
                                 <div>
-                                    <div class="g-recaptcha" data-sitekey="6LdP83kUAAAAAEoMrKqqgXlgzAtO8Joce1fHsL9h"></div>
                                     <button type="submit" class="btn btn-primary">Envoyer le message</button>
                                 </div>
                             </form>

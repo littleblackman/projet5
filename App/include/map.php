@@ -4,16 +4,20 @@
         <div class="input-group">
             <div class="map">
                 <div id="mapid" style="width: 600px; height: 400px;"></div>
-                <script src="public/js/map.js"></script>
+                <script src="App/Public/js/map.js"></script>
                 <div id="map_text">
-                    <p>Localisation :<br>
-                    <br>
-                        Région de Montpellier</p>
-                    <br>
-                    <p>Sur les réseaux :
-                    <br>
-                    <a href="www.linkedin.com/in/camoulin"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://twitter.com/CarolineMoulin4"><i class="fab fa-twitter-square"></i></a></p>
+                    <div class="localisation">
+                        <p>Localisation :<br>
+                        <br>
+                            Région de Montpellier</p>
+                        <br>
+                    </div>
+                    <div class="network">
+                        <p>Sur les réseaux :
+                        <br>
+                            <a href="https://www.linkedin.com/in/camoulin"><img src="App/Public/img/logo/linkedin-brands.svg" width="110" height="110" alt="logo linkedin"></a>
+                            <a href="https://twitter.com/CarolineMoulin4"><img src="App/Public/img/logo/twitter-square-brands.svg" width="110" height="110" alt="logo twitter"></a></p>
+                    </div>
                 </div>
             </div>
         </div>

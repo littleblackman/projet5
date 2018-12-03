@@ -42,15 +42,6 @@ try {
 }
 
 catch(\Exception $e) {
-        ob_start();
-        ?>
-
-        <div id="errorPage">
-            <p><?php  echo 'Erreur : ' . $accesdenied; ?></p>
-            <p>Retour à <a href="index.php">l'accueil</a></p>
-        </div>
-
-        <?php
-        $content = ob_get_clean();
-        require('App/View/frontend/template.php');
-    }
+    echo 'Erreur : ' . $e->getMessage();
+    require('App/View/frontend/messageView.php');
+}

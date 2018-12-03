@@ -284,9 +284,14 @@ try {
                 throw new \Exception($accesdenied);
             }
         }
+        //logout membre
+        elseif ($_GET['action'] == 'logout'){
+            $myBack::logout();
+        }
+
     }
     else {
-        require('App/View/backend/consolePanelView.php');
+        throw new \Exception($accesdenied);
     }
 
 }
@@ -294,8 +299,12 @@ catch(\Exception $e) {
     ob_start();
     ?>
 
-    <div id="errorPage">
-        <p>Retour à <a href="index.php">l'accueil</a></p>
+    <div class="card my-4">
+        <div class="card-body">
+            <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+            <p><a href="admin.php">Se connecter</a></p>
+            <p><a href="index.php">Retour à l'accueil</a></p>
+        </div>
     </div>
 
     <?php

@@ -73,4 +73,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('App/view/backend/template.php'); ?>
+<?php require('App/View/backend/template.php'); ?>

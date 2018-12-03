@@ -82,10 +82,18 @@ Map
     padding-left: 5%;
 }
 
+.network {
+    display: inline-block;
+}
+
 .creation{
     padding-left: 10%;
 }
 
+
+/**
+Diaporama
+ */
 .owl-carousel{
     width: 80%;
     margin-left: 10%;
@@ -97,8 +105,8 @@ Map
 }
 
 .owl-item img{
-    width: 80%;
-
+    width: 50%;
+    height: 500px;
 }
 
 .owl-nav{
@@ -116,3 +124,4 @@ Map
     font-weight: bold;
     color: #232323;
 }
+

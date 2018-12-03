@@ -27,4 +27,4 @@
         </table>
     </div>
 <?php $content = ob_get_clean();
-require('App/view/backend/template.php'); ?>
+require('App/View/backend/template.php'); ?>
