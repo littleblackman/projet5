@@ -5,15 +5,20 @@ hr.star-light:after {
     color: #8f82ab
 }
 #mainNav .navbar-nav li.nav-item a.nav-link.active {
-    color: #fffff;
+    color: #ffff;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link {
+    color: #ffff;
 }
 #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
-    background: #8f82ab
-;
+    background: #8f82ab;
 }
 #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
-    background: #8f82ab
-;
+    background: #8f82ab;
+}
+
+.dropdown-menu {
+    background-color: #2c3e50;
 }
 .portfolio .portfolio-item .portfolio-item-caption {
     background-color: rgba(143, 130, 171, 0.9);
@@ -22,10 +27,11 @@ hr.star-light:after {
     color: #8f82ab;
 }
 a {
-    color: #8f82ab;
+    color: #ffff;
 }
+
 a:focus, a:hover, a:active {
-    color: #8f82ab;
+    color: #ffff;
 }
 .bg-primary {
     background-color: #8f82ab !important;
@@ -53,10 +59,6 @@ a:focus, a:hover, a:active {
 
 #connectForm {
     color: #8f82ab;
-}
-
-#mainNav .navbar-nav li.nav-item a.nav-link {
-    color: #ffff;
 }
 
 table img {
