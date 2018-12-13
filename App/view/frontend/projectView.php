@@ -18,7 +18,7 @@
                         <?= nl2br($project['techno']) ?>
                     </p>
                     <p>
-                        <a href="<?= nl2br($project['link']) ?>" >Voir le site du projet</a>
+                        <a href="<?= nl2br($project['link']) ?>" target="_blank">Voir le site du projet</a>
                     </p>
                     <p><a href="index.php">Retour à l'accueil</a></p>
                 </div>

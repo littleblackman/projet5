@@ -7,7 +7,7 @@ class Manager
 {
     protected function dbconnect()
     {
-        $db = new \PDO('mysql:host=localhost;dbname=portfolio;charset=utf8', 'root', '');
+        $db = new \PDO('mysql:host=carolinebvportf1.mysql.db;dbname=carolinebvportf1;charset=utf8', 'carolinebvportf1','5QCVJP7NiVrfZkqmoAdb');
         return $db;
     }
 }

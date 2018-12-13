@@ -16,9 +16,9 @@
                     echo '';
                 }
                 ?>
-                    <p><?php echo htmlspecialchars($data['missions']); ?></p>
                     <p>De <?php echo htmlspecialchars($data['dateStart_fr']); ?>
                        à <?php echo htmlspecialchars($data['dateEnd_fr']); ?></p>
+                    <p><?php echo htmlspecialchars($data['missions']); ?></p>
                     <?php
                 }
                 $jobs->closeCursor();
@@ -61,6 +61,7 @@
                 </div>
             </div>
         </div>
+        <p><a href="index.php">Retour à l'accueil</a></p>
     </div>
 
 <?php

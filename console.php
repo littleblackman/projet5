@@ -291,7 +291,7 @@ try {
 
     }
     else {
-        throw new \Exception($accesdenied);
+        require('App/View/backend/consolePanelView.php');
     }
 
 }
@@ -299,9 +299,9 @@ catch(\Exception $e) {
     ob_start();
     ?>
 
-    <div class="card my-4">
+    <div class="card my-4"> <!--to do-->
         <div class="card-body">
-            <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+            <?php echo 'Erreur : ' . $e->getMessage();?>
             <p><a href="admin.php">Se connecter</a></p>
             <p><a href="index.php">Retour à l'accueil</a></p>
         </div>

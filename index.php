@@ -12,26 +12,9 @@ try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listProjects') {
             $myFront::listProjects();
-        }
-        //Affichage projet complet
-        elseif ($_GET['action'] == 'project') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $projectId = $_GET['id'];
-                $myFront::project($projectId);
-            }
+
         }elseif ($_GET['action'] == 'path') {
             $myFront::path();
-        }
-        //Envoi d'un mail de contact
-        elseif ($_GET['action'] == 'contact') {
-            if (isset($_POST['name']) && !empty($_POST['name'])
-                && isset($_POST['email']) && !empty($_POST['email'])
-                && isset($_POST['message']) && !empty($_POST['name']))
-            {
-                $myFront::sendMail();
-            }else{
-                throw new Exception('Tous les champs ne sont pas remplis');
-            }
         }
         else {
     require('App/View/frontend/hostView.php');

@@ -1,31 +1,45 @@
-<div class="card my-4">
-    <div class="card-body">
-        <h5 class="card-header">Me contacter</h5>
-             <p>Si vous souhaitez plus d'informations ou que vous souhaitez me proposer une offre, vous pouvez m'envoyer un message.</p>
-                    <div class="input-group">
-                        <div class="contact">
-                            <form action="index.php?action=contact" method="post">
-                                <div class="form-group">
-                                    <label>Nom :</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom"  required>
-                                    <div id="error-message"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email :</label>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Votre email"  required>
-                                    <div class="error-message"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Votre message : </label>
-                                    <textarea class="form-control" id="message" name="message" placeholder="Votre message" rows="10" required></textarea>
-                                    <div class="error-message"></div>
-                                </div>
-
-                                <div>
-                                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
-                                </div>
-                            </form>
+<section id="contact">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Contactez moi</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-md-12 floating-label-form-group controls">
+                            <label>Nom</label>
+                            <input type="text" name="name" class="form-control" placeholder="Nom" id="name" required data-validation-required-message="Veuillez saisir votre nom.">
+                            <p class="help-block text-danger"></p>
                         </div>
-                </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-md-12 floating-label-form-group controls">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Veuillez saisir votre email.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-md-12 floating-label-form-group controls">
+                            <label>Message</label>
+                            <textarea rows="5" name="message" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Veuillez saisir votre message."></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-xl">Envoyer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+
