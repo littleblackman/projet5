@@ -33,7 +33,7 @@
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <button type="submit" class="btn btn-primary btn-xl">Envoyer</button>
+                            <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Envoyer</button>
                         </div>
                     </div>
                 </form>

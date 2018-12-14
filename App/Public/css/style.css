@@ -26,8 +26,17 @@ hr.star-light:after {
 .floating-label-form-group-with-focus label {
     color: #8f82ab;
 }
+
 a {
     color: #ffff;
+}
+
+a.link, a.link:focus, a.link:hover, a.link:active{
+    color: #8f82ab;
+}
+
+i {
+    color: #8f82ab;
 }
 
 a:focus, a:hover, a:active {
