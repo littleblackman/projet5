@@ -1,11 +1,11 @@
 $(function() {
 
-    $("input,textarea").jqBootstrapValidation({
-        contactPreventSubmit: true,
-        contactSubmitError: function($form, event, errors) {
+    $("#sendMessageButton,textarea").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
             // additional error messages or events
         },
-        contactSubmitSuccess: function($form, event) {
+        submitSuccess: function($form, event) {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
             var name = $("input#name").val();

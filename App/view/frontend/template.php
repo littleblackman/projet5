@@ -68,7 +68,6 @@
 
             <?= $content ?>
 
-
 <?php include("App/Include/footer.php"); ?>
 
     <!-- Bootstrap core JavaScript -->

@@ -85,10 +85,15 @@
     </div>
 </nav>
             <?= $content ?>
-
+<footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-5 mb-lg-0">
             <p> <a href="<?php echo $_SERVER["HTTP_REFERER"] ?>">Retour à la page Précédente</a></p>
             <p><a href="console.php?action=logout">Se déconnecter</a></p>
-
+            </div>
+        </div>
+</footer>
 
 
 <!-- Bootstrap core JavaScript -->

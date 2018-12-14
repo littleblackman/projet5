@@ -23,6 +23,8 @@
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
 </footer>
 <div class="copyright py-4 text-center text-white">
     <div class="container">
