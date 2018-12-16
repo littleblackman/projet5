@@ -34,7 +34,7 @@ class Frontend
         $trainings = $trainingManager->getTrainings();
         $SkillManager = new SkillManager();
         $skills = $SkillManager->getSkills();
-        require ('App/View/frontend/cvView.php');
+        //require ('App/View/frontend/cvView.php');
     }
 
 }

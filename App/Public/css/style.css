@@ -20,9 +20,11 @@ hr.star-light:after {
 .dropdown-menu {
     background-color: #2c3e50;
 }
+
 .portfolio .portfolio-item .portfolio-item-caption {
     background-color: rgba(143, 130, 171, 0.9);
 }
+
 .floating-label-form-group-with-focus label {
     color: #8f82ab;
 }
@@ -42,6 +44,14 @@ i {
 a:focus, a:hover, a:active {
     color: #ffff;
 }
+.cv .cv-item .cv-item-caption {
+    background-color: #ffff;
+}
+
+i.cv-item {
+    color: #ffff;
+}
+
 .bg-primary {
     background-color: #8f82ab !important;
 }
@@ -72,4 +82,8 @@ a:focus, a:hover, a:active {
 
 table img {
     max-width: 150px;
+}
+
+header .img-fluid {
+    max-width: 15%;
 }

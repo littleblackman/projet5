@@ -43,7 +43,7 @@ while ($data2 = $modal->fetch()) {
                         <img class="img-fluid mb-5" src="<?php echo htmlspecialchars($data2['image']); ?>" alt="projet">
                         <p class="mb-5"><?= nl2br($data2['description']) ?></p>
                         <p class="mb-5"><?= nl2br($data2['techno']) ?></p>
-                        <p class="mb-5"><a href="<?= nl2br($data2['link']) ?>" target="_blank">Voir le site du projet</a></p>
+                        <p class="mb-5"><a href="<?= nl2br($data2['link']) ?>" class="link" target="_blank">Voir le site du projet</a></p>
                         <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
                             <i class="fa fa-close"></i>
                             Fermer le projet</a>
