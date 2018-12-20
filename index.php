@@ -13,8 +13,6 @@ try {
         if ($_GET['action'] == 'listProjects') {
             $myFront::listProjects();
 
-        }elseif ($_GET['action'] == 'path') {
-            $myFront::path();
         }
         else {
     require('App/View/frontend/hostView.php');
