@@ -11,22 +11,15 @@ use App\Model\SkillManager;
 
 class Frontend
 {
-    public static function listProjects()
+    public function listProjects()
     {
         $projectManager = new ProjectManager();
         $projects = $projectManager->getProjects();
-        $modal = $projectManager->getProjects();
+        $formations = $projectManager->getFormations();
         require('App/View/frontend/hostView.php');
     }
 
-    public static function project($projectId)
-    {
-        $projectManager = new ProjectManager();
-        $modal = $projectManager->getProjects();
-        require('App/View/frontend/hostView.php');
-    }
-
-    public static function path ()
+    public function path ()
     {
         $jobManager = new JobManager();
         $jobs = $jobManager->getJobs();
