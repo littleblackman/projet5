@@ -11,14 +11,14 @@ $accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateu
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listProjects') {
-            $myFront::listProjects();
+            $myFront->listProjects(); 
 
         }
         else {
     require('App/View/frontend/hostView.php');
 }
     }else {
-        $myFront::listProjects();
+        $myFront->listProjects();
     }
 }
 
