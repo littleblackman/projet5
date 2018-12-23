@@ -8,7 +8,9 @@ class ProjectManager extends Manager
     public function getProjects()
     {
         $db = $this->dbConnect();
-        $projects = $db->query('SELECT id, titleProject, description, techno, image, link FROM projects');
+        $r = $db->query('SELECT id, titleProject, description, techno, image, link FROM projects');
+        $r->execute();
+        $projects = $r->fetchAll(PDO::FETCH_ASSOC);
         return $projects;
     }
 
